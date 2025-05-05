@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "name": "STM32",
+      "includePath": [
+        "Core/Inc",
+        "Drivers/CMSIS/Device/ST/STM32F0xx/Include",
+        "Drivers/CMSIS/Include",
+        "Drivers/STM32F0xx_HAL_Driver/Inc"
+      ],
+      "defines": [
+        "DATA_CACHE_ENABLE=0",
+        "HSE_STARTUP_TIMEOUT=100",
+        "HSE_VALUE=8000000",
+        "HSI_VALUE=8000000",
+        "INSTRUCTION_CACHE_ENABLE=0",
+        "LSE_STARTUP_TIMEOUT=5000",
+        "LSE_VALUE=32768",
+        "LSI_VALUE=40000",
+        "PREFETCH_ENABLE=1",
+        "STM32F051x8",
+        "USE_FULL_LL_DRIVER",
+        "VDD_VALUE=3300"
+      ],
+      "compilerPath": "c:\\Users\\Philasande Ngubo\\AppData\\Roaming\\Code\\User\\globalStorage\\bmd.stm32-for-vscode\\@xpack-dev-tools\\arm-none-eabi-gcc\\14.2.1-1.1.1\\.content\\bin\\arm-none-eabi-gcc.EXE"
+    }
+  ],
+  "version": 4
+}

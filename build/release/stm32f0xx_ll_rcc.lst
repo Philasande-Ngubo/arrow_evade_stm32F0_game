@@ -1,0 +1,461 @@
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f0xx_ll_rcc.c"
+  14              		.text
+  15              		.section	.text.LL_RCC_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	LL_RCC_DeInit
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  22              	LL_RCC_DeInit:
+  23              		@ args = 0, pretend = 0, frame = 8
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 82B0     		sub	sp, sp, #8
+  27 0002 284A     		ldr	r2, .L7
+  28 0004 1368     		ldr	r3, [r2]
+  29 0006 0121     		movs	r1, #1
+  30 0008 0B43     		orrs	r3, r1
+  31 000a 1360     		str	r3, [r2]
+  32              	.L2:
+  33 000c 254B     		ldr	r3, .L7
+  34 000e 1B68     		ldr	r3, [r3]
+  35 0010 9B07     		lsls	r3, r3, #30
+  36 0012 FBD5     		bpl	.L2
+  37 0014 234A     		ldr	r2, .L7
+  38 0016 1368     		ldr	r3, [r2]
+  39 0018 F821     		movs	r1, #248
+  40 001a 8B43     		bics	r3, r1
+  41 001c 7839     		subs	r1, r1, #120
+  42 001e 0B43     		orrs	r3, r1
+  43 0020 1360     		str	r3, [r2]
+  44 0022 0123     		movs	r3, #1
+  45 0024 5B42     		rsbs	r3, r3, #0
+  46 0026 0193     		str	r3, [sp, #4]
+  47 0028 019B     		ldr	r3, [sp, #4]
+  48 002a 1F49     		ldr	r1, .L7+4
+  49 002c 0B40     		ands	r3, r1
+  50 002e 0193     		str	r3, [sp, #4]
+  51 0030 019B     		ldr	r3, [sp, #4]
+  52 0032 5360     		str	r3, [r2, #4]
+  53              	.L3:
+  54 0034 1B4B     		ldr	r3, .L7
+  55 0036 5B68     		ldr	r3, [r3, #4]
+  56 0038 0C22     		movs	r2, #12
+  57 003a 1A42     		tst	r2, r3
+  58 003c FAD1     		bne	.L3
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s 			page 2
+
+
+  59 003e 194A     		ldr	r2, .L7
+  60 0040 1368     		ldr	r3, [r2]
+  61 0042 0193     		str	r3, [sp, #4]
+  62 0044 019B     		ldr	r3, [sp, #4]
+  63 0046 1949     		ldr	r1, .L7+8
+  64 0048 0B40     		ands	r3, r1
+  65 004a 0193     		str	r3, [sp, #4]
+  66 004c 019B     		ldr	r3, [sp, #4]
+  67 004e 1360     		str	r3, [r2]
+  68              	.L4:
+  69 0050 144B     		ldr	r3, .L7
+  70 0052 1B68     		ldr	r3, [r3]
+  71 0054 9B01     		lsls	r3, r3, #6
+  72 0056 FBD4     		bmi	.L4
+  73 0058 124B     		ldr	r3, .L7
+  74 005a 1A68     		ldr	r2, [r3]
+  75 005c 1449     		ldr	r1, .L7+12
+  76 005e 0A40     		ands	r2, r1
+  77 0060 1A60     		str	r2, [r3]
+  78 0062 0021     		movs	r1, #0
+  79 0064 5960     		str	r1, [r3, #4]
+  80 0066 5A6B     		ldr	r2, [r3, #52]
+  81 0068 F820     		movs	r0, #248
+  82 006a 8243     		bics	r2, r0
+  83 006c 7838     		subs	r0, r0, #120
+  84 006e 0243     		orrs	r2, r0
+  85 0070 5A63     		str	r2, [r3, #52]
+  86 0072 5A6B     		ldr	r2, [r3, #52]
+  87 0074 7F38     		subs	r0, r0, #127
+  88 0076 8243     		bics	r2, r0
+  89 0078 5A63     		str	r2, [r3, #52]
+  90 007a 5A6B     		ldr	r2, [r3, #52]
+  91 007c 0330     		adds	r0, r0, #3
+  92 007e 8243     		bics	r2, r0
+  93 0080 5A63     		str	r2, [r3, #52]
+  94 0082 D962     		str	r1, [r3, #44]
+  95 0084 1963     		str	r1, [r3, #48]
+  96 0086 BF22     		movs	r2, #191
+  97 0088 1204     		lsls	r2, r2, #16
+  98 008a 0192     		str	r2, [sp, #4]
+  99 008c 019A     		ldr	r2, [sp, #4]
+ 100 008e 9A60     		str	r2, [r3, #8]
+ 101 0090 9960     		str	r1, [r3, #8]
+ 102 0092 596A     		ldr	r1, [r3, #36]
+ 103 0094 8022     		movs	r2, #128
+ 104 0096 5204     		lsls	r2, r2, #17
+ 105 0098 0A43     		orrs	r2, r1
+ 106 009a 5A62     		str	r2, [r3, #36]
+ 107 009c 0020     		movs	r0, #0
+ 108 009e 02B0     		add	sp, sp, #8
+ 109              		@ sp needed
+ 110 00a0 7047     		bx	lr
+ 111              	.L8:
+ 112 00a2 C046     		.align	2
+ 113              	.L7:
+ 114 00a4 00100240 		.word	1073876992
+ 115 00a8 0CF8FFF0 		.word	-251660276
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s 			page 3
+
+
+ 116 00ac FFFFF6FE 		.word	-17367041
+ 117 00b0 FFFFFBFF 		.word	-262145
+ 119              		.section	.text.LL_RCC_GetCECClockFreq,"ax",%progbits
+ 120              		.align	1
+ 121              		.global	LL_RCC_GetCECClockFreq
+ 122              		.syntax unified
+ 123              		.code	16
+ 124              		.thumb_func
+ 126              	LL_RCC_GetCECClockFreq:
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129              		@ link register save eliminated.
+ 130 0000 0B4B     		ldr	r3, .L15
+ 131 0002 1B6B     		ldr	r3, [r3, #48]
+ 132 0004 0342     		tst	r3, r0
+ 133 0006 07D1     		bne	.L10
+ 134 0008 094B     		ldr	r3, .L15
+ 135 000a 1B68     		ldr	r3, [r3]
+ 136 000c 0222     		movs	r2, #2
+ 137 000e 1000     		movs	r0, r2
+ 138 0010 1840     		ands	r0, r3
+ 139 0012 1A42     		tst	r2, r3
+ 140 0014 0AD1     		bne	.L14
+ 141              	.L9:
+ 142              		@ sp needed
+ 143 0016 7047     		bx	lr
+ 144              	.L10:
+ 145 0018 054B     		ldr	r3, .L15
+ 146 001a 1B6A     		ldr	r3, [r3, #32]
+ 147 001c 0222     		movs	r2, #2
+ 148 001e 1000     		movs	r0, r2
+ 149 0020 1840     		ands	r0, r3
+ 150 0022 1A42     		tst	r2, r3
+ 151 0024 F7D0     		beq	.L9
+ 152 0026 8020     		movs	r0, #128
+ 153 0028 0002     		lsls	r0, r0, #8
+ 154 002a F4E7     		b	.L9
+ 155              	.L14:
+ 156 002c 0148     		ldr	r0, .L15+4
+ 157 002e F2E7     		b	.L9
+ 158              	.L16:
+ 159              		.align	2
+ 160              	.L15:
+ 161 0030 00100240 		.word	1073876992
+ 162 0034 12800000 		.word	32786
+ 164              		.section	.text.RCC_GetHCLKClockFreq,"ax",%progbits
+ 165              		.align	1
+ 166              		.global	RCC_GetHCLKClockFreq
+ 167              		.syntax unified
+ 168              		.code	16
+ 169              		.thumb_func
+ 171              	RCC_GetHCLKClockFreq:
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 0, uses_anonymous_args = 0
+ 174              		@ link register save eliminated.
+ 175 0000 044B     		ldr	r3, .L18
+ 176 0002 5A68     		ldr	r2, [r3, #4]
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s 			page 4
+
+
+ 177 0004 1209     		lsrs	r2, r2, #4
+ 178 0006 0F23     		movs	r3, #15
+ 179 0008 1340     		ands	r3, r2
+ 180 000a 034A     		ldr	r2, .L18+4
+ 181 000c D35C     		ldrb	r3, [r2, r3]
+ 182 000e D840     		lsrs	r0, r0, r3
+ 183              		@ sp needed
+ 184 0010 7047     		bx	lr
+ 185              	.L19:
+ 186 0012 C046     		.align	2
+ 187              	.L18:
+ 188 0014 00100240 		.word	1073876992
+ 189 0018 00000000 		.word	AHBPrescTable
+ 191              		.section	.text.RCC_GetPCLK1ClockFreq,"ax",%progbits
+ 192              		.align	1
+ 193              		.global	RCC_GetPCLK1ClockFreq
+ 194              		.syntax unified
+ 195              		.code	16
+ 196              		.thumb_func
+ 198              	RCC_GetPCLK1ClockFreq:
+ 199              		@ args = 0, pretend = 0, frame = 0
+ 200              		@ frame_needed = 0, uses_anonymous_args = 0
+ 201              		@ link register save eliminated.
+ 202 0000 044B     		ldr	r3, .L21
+ 203 0002 5A68     		ldr	r2, [r3, #4]
+ 204 0004 120A     		lsrs	r2, r2, #8
+ 205 0006 0723     		movs	r3, #7
+ 206 0008 1340     		ands	r3, r2
+ 207 000a 034A     		ldr	r2, .L21+4
+ 208 000c D35C     		ldrb	r3, [r2, r3]
+ 209 000e D840     		lsrs	r0, r0, r3
+ 210              		@ sp needed
+ 211 0010 7047     		bx	lr
+ 212              	.L22:
+ 213 0012 C046     		.align	2
+ 214              	.L21:
+ 215 0014 00100240 		.word	1073876992
+ 216 0018 00000000 		.word	APBPrescTable
+ 218              		.section	.text.RCC_PLL_GetFreqDomain_SYS,"ax",%progbits
+ 219              		.align	1
+ 220              		.global	RCC_PLL_GetFreqDomain_SYS
+ 221              		.syntax unified
+ 222              		.code	16
+ 223              		.thumb_func
+ 225              	RCC_PLL_GetFreqDomain_SYS:
+ 226              		@ args = 0, pretend = 0, frame = 0
+ 227              		@ frame_needed = 0, uses_anonymous_args = 0
+ 228 0000 70B5     		push	{r4, r5, r6, lr}
+ 229 0002 0B4B     		ldr	r3, .L26
+ 230 0004 5B68     		ldr	r3, [r3, #4]
+ 231 0006 8022     		movs	r2, #128
+ 232 0008 5202     		lsls	r2, r2, #9
+ 233 000a 1340     		ands	r3, r2
+ 234 000c 9342     		cmp	r3, r2
+ 235 000e 0DD0     		beq	.L25
+ 236 0010 0848     		ldr	r0, .L26+4
+ 237              	.L24:
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s 			page 5
+
+
+ 238 0012 074D     		ldr	r5, .L26
+ 239 0014 E96A     		ldr	r1, [r5, #44]
+ 240 0016 0F24     		movs	r4, #15
+ 241 0018 2140     		ands	r1, r4
+ 242 001a 0131     		adds	r1, r1, #1
+ 243 001c FFF7FEFF 		bl	__aeabi_uidiv
+ 244 0020 6B68     		ldr	r3, [r5, #4]
+ 245 0022 9B0C     		lsrs	r3, r3, #18
+ 246 0024 1C40     		ands	r4, r3
+ 247 0026 0234     		adds	r4, r4, #2
+ 248 0028 6043     		muls	r0, r4
+ 249              		@ sp needed
+ 250 002a 70BD     		pop	{r4, r5, r6, pc}
+ 251              	.L25:
+ 252 002c 0248     		ldr	r0, .L26+8
+ 253 002e F0E7     		b	.L24
+ 254              	.L27:
+ 255              		.align	2
+ 256              	.L26:
+ 257 0030 00100240 		.word	1073876992
+ 258 0034 00093D00 		.word	4000000
+ 259 0038 00127A00 		.word	8000000
+ 261              		.section	.text.RCC_GetSystemClockFreq,"ax",%progbits
+ 262              		.align	1
+ 263              		.global	RCC_GetSystemClockFreq
+ 264              		.syntax unified
+ 265              		.code	16
+ 266              		.thumb_func
+ 268              	RCC_GetSystemClockFreq:
+ 269              		@ args = 0, pretend = 0, frame = 0
+ 270              		@ frame_needed = 0, uses_anonymous_args = 0
+ 271 0000 10B5     		push	{r4, lr}
+ 272 0002 054B     		ldr	r3, .L32
+ 273 0004 5A68     		ldr	r2, [r3, #4]
+ 274 0006 0C23     		movs	r3, #12
+ 275 0008 1340     		ands	r3, r2
+ 276 000a 082B     		cmp	r3, #8
+ 277 000c 01D0     		beq	.L31
+ 278 000e 0348     		ldr	r0, .L32+4
+ 279              	.L28:
+ 280              		@ sp needed
+ 281 0010 10BD     		pop	{r4, pc}
+ 282              	.L31:
+ 283 0012 FFF7FEFF 		bl	RCC_PLL_GetFreqDomain_SYS
+ 284 0016 FBE7     		b	.L28
+ 285              	.L33:
+ 286              		.align	2
+ 287              	.L32:
+ 288 0018 00100240 		.word	1073876992
+ 289 001c 00127A00 		.word	8000000
+ 291              		.section	.text.LL_RCC_GetSystemClocksFreq,"ax",%progbits
+ 292              		.align	1
+ 293              		.global	LL_RCC_GetSystemClocksFreq
+ 294              		.syntax unified
+ 295              		.code	16
+ 296              		.thumb_func
+ 298              	LL_RCC_GetSystemClocksFreq:
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s 			page 6
+
+
+ 299              		@ args = 0, pretend = 0, frame = 0
+ 300              		@ frame_needed = 0, uses_anonymous_args = 0
+ 301 0000 10B5     		push	{r4, lr}
+ 302 0002 0400     		movs	r4, r0
+ 303 0004 FFF7FEFF 		bl	RCC_GetSystemClockFreq
+ 304 0008 2060     		str	r0, [r4]
+ 305 000a FFF7FEFF 		bl	RCC_GetHCLKClockFreq
+ 306 000e 6060     		str	r0, [r4, #4]
+ 307 0010 FFF7FEFF 		bl	RCC_GetPCLK1ClockFreq
+ 308 0014 A060     		str	r0, [r4, #8]
+ 309              		@ sp needed
+ 310 0016 10BD     		pop	{r4, pc}
+ 312              		.section	.text.LL_RCC_GetUSARTClockFreq,"ax",%progbits
+ 313              		.align	1
+ 314              		.global	LL_RCC_GetUSARTClockFreq
+ 315              		.syntax unified
+ 316              		.code	16
+ 317              		.thumb_func
+ 319              	LL_RCC_GetUSARTClockFreq:
+ 320              		@ args = 0, pretend = 0, frame = 0
+ 321              		@ frame_needed = 0, uses_anonymous_args = 0
+ 322 0000 10B5     		push	{r4, lr}
+ 323 0002 0028     		cmp	r0, #0
+ 324 0004 29D1     		bne	.L40
+ 325 0006 164B     		ldr	r3, .L43
+ 326 0008 1A6B     		ldr	r2, [r3, #48]
+ 327 000a 0323     		movs	r3, #3
+ 328 000c 8340     		lsls	r3, r3, r0
+ 329 000e 1340     		ands	r3, r2
+ 330 0010 0006     		lsls	r0, r0, #24
+ 331 0012 0343     		orrs	r3, r0
+ 332 0014 022B     		cmp	r3, #2
+ 333 0016 0FD0     		beq	.L37
+ 334 0018 032B     		cmp	r3, #3
+ 335 001a 04D0     		beq	.L38
+ 336 001c 012B     		cmp	r3, #1
+ 337 001e 15D1     		bne	.L39
+ 338 0020 FFF7FEFF 		bl	RCC_GetSystemClockFreq
+ 339 0024 1AE0     		b	.L35
+ 340              	.L38:
+ 341 0026 0E4B     		ldr	r3, .L43
+ 342 0028 1B68     		ldr	r3, [r3]
+ 343 002a 0222     		movs	r2, #2
+ 344 002c 1000     		movs	r0, r2
+ 345 002e 1840     		ands	r0, r3
+ 346 0030 1A42     		tst	r2, r3
+ 347 0032 13D0     		beq	.L35
+ 348 0034 0B48     		ldr	r0, .L43+4
+ 349 0036 11E0     		b	.L35
+ 350              	.L37:
+ 351 0038 094B     		ldr	r3, .L43
+ 352 003a 1B6A     		ldr	r3, [r3, #32]
+ 353 003c 0222     		movs	r2, #2
+ 354 003e 1000     		movs	r0, r2
+ 355 0040 1840     		ands	r0, r3
+ 356 0042 1A42     		tst	r2, r3
+ 357 0044 0AD0     		beq	.L35
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s 			page 7
+
+
+ 358 0046 8020     		movs	r0, #128
+ 359 0048 0002     		lsls	r0, r0, #8
+ 360 004a 07E0     		b	.L35
+ 361              	.L39:
+ 362 004c FFF7FEFF 		bl	RCC_GetSystemClockFreq
+ 363 0050 FFF7FEFF 		bl	RCC_GetHCLKClockFreq
+ 364 0054 FFF7FEFF 		bl	RCC_GetPCLK1ClockFreq
+ 365 0058 00E0     		b	.L35
+ 366              	.L40:
+ 367 005a 0020     		movs	r0, #0
+ 368              	.L35:
+ 369              		@ sp needed
+ 370 005c 10BD     		pop	{r4, pc}
+ 371              	.L44:
+ 372 005e C046     		.align	2
+ 373              	.L43:
+ 374 0060 00100240 		.word	1073876992
+ 375 0064 00127A00 		.word	8000000
+ 377              		.section	.text.LL_RCC_GetI2CClockFreq,"ax",%progbits
+ 378              		.align	1
+ 379              		.global	LL_RCC_GetI2CClockFreq
+ 380              		.syntax unified
+ 381              		.code	16
+ 382              		.thumb_func
+ 384              	LL_RCC_GetI2CClockFreq:
+ 385              		@ args = 0, pretend = 0, frame = 0
+ 386              		@ frame_needed = 0, uses_anonymous_args = 0
+ 387 0000 10B5     		push	{r4, lr}
+ 388 0002 1028     		cmp	r0, #16
+ 389 0004 01D0     		beq	.L50
+ 390 0006 0020     		movs	r0, #0
+ 391              	.L45:
+ 392              		@ sp needed
+ 393 0008 10BD     		pop	{r4, pc}
+ 394              	.L50:
+ 395 000a 084B     		ldr	r3, .L52
+ 396 000c 1B6B     		ldr	r3, [r3, #48]
+ 397 000e 0340     		ands	r3, r0
+ 398 0010 102B     		cmp	r3, #16
+ 399 0012 08D0     		beq	.L51
+ 400 0014 054B     		ldr	r3, .L52
+ 401 0016 1B68     		ldr	r3, [r3]
+ 402 0018 0222     		movs	r2, #2
+ 403 001a 1000     		movs	r0, r2
+ 404 001c 1840     		ands	r0, r3
+ 405 001e 1A42     		tst	r2, r3
+ 406 0020 F2D0     		beq	.L45
+ 407 0022 0348     		ldr	r0, .L52+4
+ 408 0024 F0E7     		b	.L45
+ 409              	.L51:
+ 410 0026 FFF7FEFF 		bl	RCC_GetSystemClockFreq
+ 411 002a EDE7     		b	.L45
+ 412              	.L53:
+ 413              		.align	2
+ 414              	.L52:
+ 415 002c 00100240 		.word	1073876992
+ 416 0030 00127A00 		.word	8000000
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s 			page 8
+
+
+ 418              		.global	__aeabi_uidiv
+ 419              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 14.2.1 20241119"
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f0xx_ll_rcc.c
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:16     .text.LL_RCC_DeInit:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:22     .text.LL_RCC_DeInit:00000000 LL_RCC_DeInit
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:114    .text.LL_RCC_DeInit:000000a4 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:120    .text.LL_RCC_GetCECClockFreq:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:126    .text.LL_RCC_GetCECClockFreq:00000000 LL_RCC_GetCECClockFreq
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:161    .text.LL_RCC_GetCECClockFreq:00000030 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:165    .text.RCC_GetHCLKClockFreq:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:171    .text.RCC_GetHCLKClockFreq:00000000 RCC_GetHCLKClockFreq
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:188    .text.RCC_GetHCLKClockFreq:00000014 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:192    .text.RCC_GetPCLK1ClockFreq:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:198    .text.RCC_GetPCLK1ClockFreq:00000000 RCC_GetPCLK1ClockFreq
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:215    .text.RCC_GetPCLK1ClockFreq:00000014 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:219    .text.RCC_PLL_GetFreqDomain_SYS:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:225    .text.RCC_PLL_GetFreqDomain_SYS:00000000 RCC_PLL_GetFreqDomain_SYS
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:257    .text.RCC_PLL_GetFreqDomain_SYS:00000030 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:262    .text.RCC_GetSystemClockFreq:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:268    .text.RCC_GetSystemClockFreq:00000000 RCC_GetSystemClockFreq
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:288    .text.RCC_GetSystemClockFreq:00000018 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:292    .text.LL_RCC_GetSystemClocksFreq:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:298    .text.LL_RCC_GetSystemClocksFreq:00000000 LL_RCC_GetSystemClocksFreq
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:313    .text.LL_RCC_GetUSARTClockFreq:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:319    .text.LL_RCC_GetUSARTClockFreq:00000000 LL_RCC_GetUSARTClockFreq
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:374    .text.LL_RCC_GetUSARTClockFreq:00000060 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:378    .text.LL_RCC_GetI2CClockFreq:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:384    .text.LL_RCC_GetI2CClockFreq:00000000 LL_RCC_GetI2CClockFreq
+C:\Users\PHILAS~1\AppData\Local\Temp\cc1vfbg8.s:415    .text.LL_RCC_GetI2CClockFreq:0000002c $d
+
+UNDEFINED SYMBOLS
+AHBPrescTable
+APBPrescTable
+__aeabi_uidiv

@@ -1,0 +1,160 @@
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"system_stm32f0xx.c"
+  14              		.text
+  15              		.section	.text.SystemInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	SystemInit
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  22              	SystemInit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26              		@ sp needed
+  27 0000 7047     		bx	lr
+  29              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+  30              		.align	1
+  31              		.global	SystemCoreClockUpdate
+  32              		.syntax unified
+  33              		.code	16
+  34              		.thumb_func
+  36              	SystemCoreClockUpdate:
+  37              		@ args = 0, pretend = 0, frame = 0
+  38              		@ frame_needed = 0, uses_anonymous_args = 0
+  39 0000 10B5     		push	{r4, lr}
+  40 0002 1F4B     		ldr	r3, .L8
+  41 0004 5A68     		ldr	r2, [r3, #4]
+  42 0006 0C23     		movs	r3, #12
+  43 0008 1340     		ands	r3, r2
+  44 000a 042B     		cmp	r3, #4
+  45 000c 12D0     		beq	.L3
+  46 000e 082B     		cmp	r3, #8
+  47 0010 14D0     		beq	.L4
+  48 0012 002B     		cmp	r3, #0
+  49 0014 2FD1     		bne	.L5
+  50 0016 1B4B     		ldr	r3, .L8+4
+  51 0018 1B4A     		ldr	r2, .L8+8
+  52 001a 1A60     		str	r2, [r3]
+  53              	.L6:
+  54 001c 184B     		ldr	r3, .L8
+  55 001e 5A68     		ldr	r2, [r3, #4]
+  56 0020 1209     		lsrs	r2, r2, #4
+  57 0022 0F23     		movs	r3, #15
+  58 0024 1340     		ands	r3, r2
+  59 0026 194A     		ldr	r2, .L8+12
+  60 0028 D15C     		ldrb	r1, [r2, r3]
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s 			page 2
+
+
+  61 002a 164A     		ldr	r2, .L8+4
+  62 002c 1368     		ldr	r3, [r2]
+  63 002e CB40     		lsrs	r3, r3, r1
+  64 0030 1360     		str	r3, [r2]
+  65              		@ sp needed
+  66 0032 10BD     		pop	{r4, pc}
+  67              	.L3:
+  68 0034 134B     		ldr	r3, .L8+4
+  69 0036 144A     		ldr	r2, .L8+8
+  70 0038 1A60     		str	r2, [r3]
+  71 003a EFE7     		b	.L6
+  72              	.L4:
+  73 003c 104B     		ldr	r3, .L8
+  74 003e 5C68     		ldr	r4, [r3, #4]
+  75 0040 5A68     		ldr	r2, [r3, #4]
+  76 0042 A40C     		lsrs	r4, r4, #18
+  77 0044 0F21     		movs	r1, #15
+  78 0046 0C40     		ands	r4, r1
+  79 0048 0234     		adds	r4, r4, #2
+  80 004a DB6A     		ldr	r3, [r3, #44]
+  81 004c 1940     		ands	r1, r3
+  82 004e 0131     		adds	r1, r1, #1
+  83 0050 D203     		lsls	r2, r2, #15
+  84 0052 06D5     		bpl	.L7
+  85 0054 0C48     		ldr	r0, .L8+8
+  86 0056 FFF7FEFF 		bl	__aeabi_uidiv
+  87 005a 6043     		muls	r0, r4
+  88 005c 094B     		ldr	r3, .L8+4
+  89 005e 1860     		str	r0, [r3]
+  90 0060 DCE7     		b	.L6
+  91              	.L7:
+  92 0062 6201     		lsls	r2, r4, #5
+  93 0064 121B     		subs	r2, r2, r4
+  94 0066 9301     		lsls	r3, r2, #6
+  95 0068 9B1A     		subs	r3, r3, r2
+  96 006a DB00     		lsls	r3, r3, #3
+  97 006c 1B19     		adds	r3, r3, r4
+  98 006e 1B02     		lsls	r3, r3, #8
+  99 0070 044A     		ldr	r2, .L8+4
+ 100 0072 1360     		str	r3, [r2]
+ 101 0074 D2E7     		b	.L6
+ 102              	.L5:
+ 103 0076 034B     		ldr	r3, .L8+4
+ 104 0078 034A     		ldr	r2, .L8+8
+ 105 007a 1A60     		str	r2, [r3]
+ 106 007c CEE7     		b	.L6
+ 107              	.L9:
+ 108 007e C046     		.align	2
+ 109              	.L8:
+ 110 0080 00100240 		.word	1073876992
+ 111 0084 00000000 		.word	SystemCoreClock
+ 112 0088 00127A00 		.word	8000000
+ 113 008c 00000000 		.word	AHBPrescTable
+ 115              		.global	APBPrescTable
+ 116              		.section	.rodata.APBPrescTable,"a"
+ 117              		.align	2
+ 120              	APBPrescTable:
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s 			page 3
+
+
+ 121 0000 00000000 		.ascii	"\000\000\000\000\001\002\003\004"
+ 121      01020304 
+ 122              		.global	AHBPrescTable
+ 123              		.section	.rodata.AHBPrescTable,"a"
+ 124              		.align	2
+ 127              	AHBPrescTable:
+ 128 0000 00000000 		.ascii	"\000\000\000\000\000\000\000\000\001\002\003\004\006"
+ 128      00000000 
+ 128      01020304 
+ 128      06
+ 129 000d 070809   		.ascii	"\007\010\011"
+ 130              		.global	SystemCoreClock
+ 131              		.section	.data.SystemCoreClock,"aw"
+ 132              		.align	2
+ 135              	SystemCoreClock:
+ 136 0000 00127A00 		.word	8000000
+ 137              		.global	__aeabi_uidiv
+ 138              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 14.2.1 20241119"
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_stm32f0xx.c
+C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s:16     .text.SystemInit:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s:22     .text.SystemInit:00000000 SystemInit
+C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s:30     .text.SystemCoreClockUpdate:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s:36     .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s:110    .text.SystemCoreClockUpdate:00000080 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s:135    .data.SystemCoreClock:00000000 SystemCoreClock
+C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s:127    .rodata.AHBPrescTable:00000000 AHBPrescTable
+C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s:120    .rodata.APBPrescTable:00000000 APBPrescTable
+C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s:117    .rodata.APBPrescTable:00000000 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s:124    .rodata.AHBPrescTable:00000000 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cccvw2Un.s:132    .data.SystemCoreClock:00000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_uidiv

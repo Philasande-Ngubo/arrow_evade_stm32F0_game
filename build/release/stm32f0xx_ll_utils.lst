@@ -1,0 +1,532 @@
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f0xx_ll_utils.c"
+  14              		.text
+  15              		.section	.text.LL_RCC_PLL_ConfigDomain_SYS,"ax",%progbits
+  16              		.align	1
+  17              		.syntax unified
+  18              		.code	16
+  19              		.thumb_func
+  21              	LL_RCC_PLL_ConfigDomain_SYS:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 30B5     		push	{r4, r5, lr}
+  25 0002 0500     		movs	r5, r0
+  26 0004 084C     		ldr	r4, .L2
+  27 0006 6368     		ldr	r3, [r4, #4]
+  28 0008 084A     		ldr	r2, .L2+4
+  29 000a 1340     		ands	r3, r2
+  30 000c 8022     		movs	r2, #128
+  31 000e 5202     		lsls	r2, r2, #9
+  32 0010 0240     		ands	r2, r0
+  33 0012 0A43     		orrs	r2, r1
+  34 0014 1343     		orrs	r3, r2
+  35 0016 6360     		str	r3, [r4, #4]
+  36 0018 E06A     		ldr	r0, [r4, #44]
+  37 001a 0F23     		movs	r3, #15
+  38 001c 9843     		bics	r0, r3
+  39 001e 2B40     		ands	r3, r5
+  40 0020 1843     		orrs	r0, r3
+  41 0022 E062     		str	r0, [r4, #44]
+  42              		@ sp needed
+  43 0024 30BD     		pop	{r4, r5, pc}
+  44              	.L3:
+  45 0026 C046     		.align	2
+  46              	.L2:
+  47 0028 00100240 		.word	1073876992
+  48 002c FFFFC2FF 		.word	-3997697
+  50              		.section	.text.UTILS_GetPLLOutputFrequency,"ax",%progbits
+  51              		.align	1
+  52              		.syntax unified
+  53              		.code	16
+  54              		.thumb_func
+  56              	UTILS_GetPLLOutputFrequency:
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59 0000 10B5     		push	{r4, lr}
+  60 0002 0C00     		movs	r4, r1
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s 			page 2
+
+
+  61 0004 4968     		ldr	r1, [r1, #4]
+  62 0006 0131     		adds	r1, r1, #1
+  63 0008 FFF7FEFF 		bl	__aeabi_uidiv
+  64 000c 2268     		ldr	r2, [r4]
+  65 000e 920C     		lsrs	r2, r2, #18
+  66 0010 0F23     		movs	r3, #15
+  67 0012 1340     		ands	r3, r2
+  68 0014 0233     		adds	r3, r3, #2
+  69 0016 5843     		muls	r0, r3
+  70              		@ sp needed
+  71 0018 10BD     		pop	{r4, pc}
+  73              		.section	.text.UTILS_PLL_IsBusy,"ax",%progbits
+  74              		.align	1
+  75              		.syntax unified
+  76              		.code	16
+  77              		.thumb_func
+  79              	UTILS_PLL_IsBusy:
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+  83 0000 034B     		ldr	r3, .L8
+  84 0002 1B68     		ldr	r3, [r3]
+  85 0004 9B01     		lsls	r3, r3, #6
+  86 0006 01D4     		bmi	.L7
+  87 0008 0020     		movs	r0, #0
+  88              	.L6:
+  89              		@ sp needed
+  90 000a 7047     		bx	lr
+  91              	.L7:
+  92 000c 0120     		movs	r0, #1
+  93 000e FCE7     		b	.L6
+  94              	.L9:
+  95              		.align	2
+  96              	.L8:
+  97 0010 00100240 		.word	1073876992
+  99              		.section	.text.LL_Init1msTick,"ax",%progbits
+ 100              		.align	1
+ 101              		.global	LL_Init1msTick
+ 102              		.syntax unified
+ 103              		.code	16
+ 104              		.thumb_func
+ 106              	LL_Init1msTick:
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109 0000 10B5     		push	{r4, lr}
+ 110 0002 FA21     		movs	r1, #250
+ 111 0004 8900     		lsls	r1, r1, #2
+ 112 0006 FFF7FEFF 		bl	__aeabi_uidiv
+ 113 000a 0138     		subs	r0, r0, #1
+ 114 000c 034B     		ldr	r3, .L11
+ 115 000e 5860     		str	r0, [r3, #4]
+ 116 0010 0022     		movs	r2, #0
+ 117 0012 9A60     		str	r2, [r3, #8]
+ 118 0014 0532     		adds	r2, r2, #5
+ 119 0016 1A60     		str	r2, [r3]
+ 120              		@ sp needed
+ 121 0018 10BD     		pop	{r4, pc}
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s 			page 3
+
+
+ 122              	.L12:
+ 123 001a C046     		.align	2
+ 124              	.L11:
+ 125 001c 10E000E0 		.word	-536813552
+ 127              		.section	.text.LL_mDelay,"ax",%progbits
+ 128              		.align	1
+ 129              		.global	LL_mDelay
+ 130              		.syntax unified
+ 131              		.code	16
+ 132              		.thumb_func
+ 134              	LL_mDelay:
+ 135              		@ args = 0, pretend = 0, frame = 8
+ 136              		@ frame_needed = 0, uses_anonymous_args = 0
+ 137              		@ link register save eliminated.
+ 138 0000 82B0     		sub	sp, sp, #8
+ 139 0002 084B     		ldr	r3, .L21
+ 140 0004 1B68     		ldr	r3, [r3]
+ 141 0006 0193     		str	r3, [sp, #4]
+ 142 0008 019B     		ldr	r3, [sp, #4]
+ 143 000a 431C     		adds	r3, r0, #1
+ 144 000c 00D0     		beq	.L15
+ 145 000e 0130     		adds	r0, r0, #1
+ 146              	.L15:
+ 147 0010 0028     		cmp	r0, #0
+ 148 0012 05D0     		beq	.L20
+ 149 0014 034B     		ldr	r3, .L21
+ 150 0016 1B68     		ldr	r3, [r3]
+ 151 0018 DB03     		lsls	r3, r3, #15
+ 152 001a F9D5     		bpl	.L15
+ 153 001c 0138     		subs	r0, r0, #1
+ 154 001e F7E7     		b	.L15
+ 155              	.L20:
+ 156 0020 02B0     		add	sp, sp, #8
+ 157              		@ sp needed
+ 158 0022 7047     		bx	lr
+ 159              	.L22:
+ 160              		.align	2
+ 161              	.L21:
+ 162 0024 10E000E0 		.word	-536813552
+ 164              		.section	.text.LL_SetSystemCoreClock,"ax",%progbits
+ 165              		.align	1
+ 166              		.global	LL_SetSystemCoreClock
+ 167              		.syntax unified
+ 168              		.code	16
+ 169              		.thumb_func
+ 171              	LL_SetSystemCoreClock:
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 0, uses_anonymous_args = 0
+ 174              		@ link register save eliminated.
+ 175 0000 014B     		ldr	r3, .L24
+ 176 0002 1860     		str	r0, [r3]
+ 177              		@ sp needed
+ 178 0004 7047     		bx	lr
+ 179              	.L25:
+ 180 0006 C046     		.align	2
+ 181              	.L24:
+ 182 0008 00000000 		.word	SystemCoreClock
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s 			page 4
+
+
+ 184              		.section	.text.LL_SetFlashLatency,"ax",%progbits
+ 185              		.align	1
+ 186              		.global	LL_SetFlashLatency
+ 187              		.syntax unified
+ 188              		.code	16
+ 189              		.thumb_func
+ 191              	LL_SetFlashLatency:
+ 192              		@ args = 0, pretend = 0, frame = 0
+ 193              		@ frame_needed = 0, uses_anonymous_args = 0
+ 194              		@ link register save eliminated.
+ 195 0000 0028     		cmp	r0, #0
+ 196 0002 19D0     		beq	.L31
+ 197 0004 0E4B     		ldr	r3, .L34
+ 198 0006 9842     		cmp	r0, r3
+ 199 0008 14D9     		bls	.L32
+ 200 000a 0121     		movs	r1, #1
+ 201              	.L28:
+ 202 000c 0D4A     		ldr	r2, .L34+4
+ 203 000e 1368     		ldr	r3, [r2]
+ 204 0010 0120     		movs	r0, #1
+ 205 0012 8343     		bics	r3, r0
+ 206 0014 0B43     		orrs	r3, r1
+ 207 0016 1360     		str	r3, [r2]
+ 208 0018 0222     		movs	r2, #2
+ 209              	.L30:
+ 210 001a 0A4B     		ldr	r3, .L34+4
+ 211 001c 1868     		ldr	r0, [r3]
+ 212 001e 0123     		movs	r3, #1
+ 213 0020 0340     		ands	r3, r0
+ 214 0022 013A     		subs	r2, r2, #1
+ 215 0024 9942     		cmp	r1, r3
+ 216 0026 01D0     		beq	.L29
+ 217 0028 002A     		cmp	r2, #0
+ 218 002a F6D1     		bne	.L30
+ 219              	.L29:
+ 220 002c 9942     		cmp	r1, r3
+ 221 002e 05D0     		beq	.L33
+ 222 0030 0120     		movs	r0, #1
+ 223 0032 02E0     		b	.L27
+ 224              	.L32:
+ 225 0034 0021     		movs	r1, #0
+ 226 0036 E9E7     		b	.L28
+ 227              	.L31:
+ 228 0038 0120     		movs	r0, #1
+ 229              	.L27:
+ 230              		@ sp needed
+ 231 003a 7047     		bx	lr
+ 232              	.L33:
+ 233 003c 0020     		movs	r0, #0
+ 234 003e FCE7     		b	.L27
+ 235              	.L35:
+ 236              		.align	2
+ 237              	.L34:
+ 238 0040 00366E01 		.word	24000000
+ 239 0044 00200240 		.word	1073881088
+ 241              		.section	.text.UTILS_EnablePLLAndSwitchSystem,"ax",%progbits
+ 242              		.align	1
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s 			page 5
+
+
+ 243              		.syntax unified
+ 244              		.code	16
+ 245              		.thumb_func
+ 247              	UTILS_EnablePLLAndSwitchSystem:
+ 248              		@ args = 0, pretend = 0, frame = 0
+ 249              		@ frame_needed = 0, uses_anonymous_args = 0
+ 250 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 251 0002 0400     		movs	r4, r0
+ 252 0004 0D00     		movs	r5, r1
+ 253 0006 264B     		ldr	r3, .L48
+ 254 0008 1E68     		ldr	r6, [r3]
+ 255 000a 264B     		ldr	r3, .L48+4
+ 256 000c 5A68     		ldr	r2, [r3, #4]
+ 257 000e 1209     		lsrs	r2, r2, #4
+ 258 0010 0F23     		movs	r3, #15
+ 259 0012 1340     		ands	r3, r2
+ 260 0014 244A     		ldr	r2, .L48+8
+ 261 0016 D35C     		ldrb	r3, [r2, r3]
+ 262 0018 9E40     		lsls	r6, r6, r3
+ 263 001a 8642     		cmp	r6, r0
+ 264 001c 2AD3     		bcc	.L45
+ 265 001e 0027     		movs	r7, #0
+ 266              	.L37:
+ 267 0020 204A     		ldr	r2, .L48+4
+ 268 0022 1168     		ldr	r1, [r2]
+ 269 0024 8023     		movs	r3, #128
+ 270 0026 5B04     		lsls	r3, r3, #17
+ 271 0028 0B43     		orrs	r3, r1
+ 272 002a 1360     		str	r3, [r2]
+ 273              	.L39:
+ 274 002c 1D4B     		ldr	r3, .L48+4
+ 275 002e 1B68     		ldr	r3, [r3]
+ 276 0030 9B01     		lsls	r3, r3, #6
+ 277 0032 FBD5     		bpl	.L39
+ 278 0034 2B68     		ldr	r3, [r5]
+ 279 0036 1B4A     		ldr	r2, .L48+4
+ 280 0038 5168     		ldr	r1, [r2, #4]
+ 281 003a F020     		movs	r0, #240
+ 282 003c 8143     		bics	r1, r0
+ 283 003e 0B43     		orrs	r3, r1
+ 284 0040 5360     		str	r3, [r2, #4]
+ 285 0042 5368     		ldr	r3, [r2, #4]
+ 286 0044 0321     		movs	r1, #3
+ 287 0046 8B43     		bics	r3, r1
+ 288 0048 0139     		subs	r1, r1, #1
+ 289 004a 0B43     		orrs	r3, r1
+ 290 004c 5360     		str	r3, [r2, #4]
+ 291              	.L40:
+ 292 004e 154B     		ldr	r3, .L48+4
+ 293 0050 5A68     		ldr	r2, [r3, #4]
+ 294 0052 0C23     		movs	r3, #12
+ 295 0054 1340     		ands	r3, r2
+ 296 0056 082B     		cmp	r3, #8
+ 297 0058 F9D1     		bne	.L40
+ 298 005a 6B68     		ldr	r3, [r5, #4]
+ 299 005c 1149     		ldr	r1, .L48+4
+ 300 005e 4A68     		ldr	r2, [r1, #4]
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s 			page 6
+
+
+ 301 0060 1248     		ldr	r0, .L48+12
+ 302 0062 0240     		ands	r2, r0
+ 303 0064 1343     		orrs	r3, r2
+ 304 0066 4B60     		str	r3, [r1, #4]
+ 305              	.L38:
+ 306 0068 A642     		cmp	r6, r4
+ 307 006a 08D8     		bhi	.L46
+ 308              	.L41:
+ 309 006c 002F     		cmp	r7, #0
+ 310 006e 0BD0     		beq	.L47
+ 311              	.L42:
+ 312 0070 3800     		movs	r0, r7
+ 313              		@ sp needed
+ 314 0072 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 315              	.L45:
+ 316 0074 FFF7FEFF 		bl	LL_SetFlashLatency
+ 317 0078 071E     		subs	r7, r0, #0
+ 318 007a F5D1     		bne	.L38
+ 319 007c D0E7     		b	.L37
+ 320              	.L46:
+ 321 007e 2000     		movs	r0, r4
+ 322 0080 FFF7FEFF 		bl	LL_SetFlashLatency
+ 323 0084 0700     		movs	r7, r0
+ 324 0086 F1E7     		b	.L41
+ 325              	.L47:
+ 326 0088 2A68     		ldr	r2, [r5]
+ 327 008a 1209     		lsrs	r2, r2, #4
+ 328 008c 0F23     		movs	r3, #15
+ 329 008e 1340     		ands	r3, r2
+ 330 0090 054A     		ldr	r2, .L48+8
+ 331 0092 D35C     		ldrb	r3, [r2, r3]
+ 332 0094 2000     		movs	r0, r4
+ 333 0096 D840     		lsrs	r0, r0, r3
+ 334 0098 FFF7FEFF 		bl	LL_SetSystemCoreClock
+ 335 009c E8E7     		b	.L42
+ 336              	.L49:
+ 337 009e C046     		.align	2
+ 338              	.L48:
+ 339 00a0 00000000 		.word	SystemCoreClock
+ 340 00a4 00100240 		.word	1073876992
+ 341 00a8 00000000 		.word	AHBPrescTable
+ 342 00ac FFF8FFFF 		.word	-1793
+ 344              		.section	.text.LL_PLL_ConfigSystemClock_HSI,"ax",%progbits
+ 345              		.align	1
+ 346              		.global	LL_PLL_ConfigSystemClock_HSI
+ 347              		.syntax unified
+ 348              		.code	16
+ 349              		.thumb_func
+ 351              	LL_PLL_ConfigSystemClock_HSI:
+ 352              		@ args = 0, pretend = 0, frame = 0
+ 353              		@ frame_needed = 0, uses_anonymous_args = 0
+ 354 0000 70B5     		push	{r4, r5, r6, lr}
+ 355 0002 0500     		movs	r5, r0
+ 356 0004 0C00     		movs	r4, r1
+ 357 0006 FFF7FEFF 		bl	UTILS_PLL_IsBusy
+ 358 000a 0028     		cmp	r0, #0
+ 359 000c 21D1     		bne	.L54
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s 			page 7
+
+
+ 360 000e 0123     		movs	r3, #1
+ 361 0010 6B60     		str	r3, [r5, #4]
+ 362 0012 2900     		movs	r1, r5
+ 363 0014 1048     		ldr	r0, .L57
+ 364 0016 FFF7FEFF 		bl	UTILS_GetPLLOutputFrequency
+ 365 001a 104B     		ldr	r3, .L57+4
+ 366 001c 1B68     		ldr	r3, [r3]
+ 367 001e 9B07     		lsls	r3, r3, #30
+ 368 0020 08D4     		bmi	.L52
+ 369 0022 0E4A     		ldr	r2, .L57+4
+ 370 0024 1368     		ldr	r3, [r2]
+ 371 0026 0121     		movs	r1, #1
+ 372 0028 0B43     		orrs	r3, r1
+ 373 002a 1360     		str	r3, [r2]
+ 374              	.L53:
+ 375 002c 0B4B     		ldr	r3, .L57+4
+ 376 002e 1B68     		ldr	r3, [r3]
+ 377 0030 9B07     		lsls	r3, r3, #30
+ 378 0032 FBD5     		bpl	.L53
+ 379              	.L52:
+ 380 0034 2A68     		ldr	r2, [r5]
+ 381 0036 094B     		ldr	r3, .L57+4
+ 382 0038 5968     		ldr	r1, [r3, #4]
+ 383 003a 094D     		ldr	r5, .L57+8
+ 384 003c 2940     		ands	r1, r5
+ 385 003e 0A43     		orrs	r2, r1
+ 386 0040 5A60     		str	r2, [r3, #4]
+ 387 0042 DA6A     		ldr	r2, [r3, #44]
+ 388 0044 0F21     		movs	r1, #15
+ 389 0046 8A43     		bics	r2, r1
+ 390 0048 DA62     		str	r2, [r3, #44]
+ 391 004a 2100     		movs	r1, r4
+ 392 004c FFF7FEFF 		bl	UTILS_EnablePLLAndSwitchSystem
+ 393              	.L51:
+ 394              		@ sp needed
+ 395 0050 70BD     		pop	{r4, r5, r6, pc}
+ 396              	.L54:
+ 397 0052 0120     		movs	r0, #1
+ 398 0054 FCE7     		b	.L51
+ 399              	.L58:
+ 400 0056 C046     		.align	2
+ 401              	.L57:
+ 402 0058 00127A00 		.word	8000000
+ 403 005c 00100240 		.word	1073876992
+ 404 0060 FFFFC2FF 		.word	-3997697
+ 406              		.section	.text.LL_PLL_ConfigSystemClock_HSE,"ax",%progbits
+ 407              		.align	1
+ 408              		.global	LL_PLL_ConfigSystemClock_HSE
+ 409              		.syntax unified
+ 410              		.code	16
+ 411              		.thumb_func
+ 413              	LL_PLL_ConfigSystemClock_HSE:
+ 414              		@ args = 0, pretend = 0, frame = 0
+ 415              		@ frame_needed = 0, uses_anonymous_args = 0
+ 416 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 417 0002 C646     		mov	lr, r8
+ 418 0004 00B5     		push	{lr}
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s 			page 8
+
+
+ 419 0006 0400     		movs	r4, r0
+ 420 0008 0F00     		movs	r7, r1
+ 421 000a 1600     		movs	r6, r2
+ 422 000c 1D00     		movs	r5, r3
+ 423 000e FFF7FEFF 		bl	UTILS_PLL_IsBusy
+ 424 0012 0028     		cmp	r0, #0
+ 425 0014 2ED1     		bne	.L65
+ 426 0016 3100     		movs	r1, r6
+ 427 0018 2000     		movs	r0, r4
+ 428 001a FFF7FEFF 		bl	UTILS_GetPLLOutputFrequency
+ 429 001e 8046     		mov	r8, r0
+ 430 0020 154B     		ldr	r3, .L69
+ 431 0022 1B68     		ldr	r3, [r3]
+ 432 0024 9B03     		lsls	r3, r3, #14
+ 433 0026 10D4     		bmi	.L61
+ 434 0028 012F     		cmp	r7, #1
+ 435 002a 1CD0     		beq	.L68
+ 436 002c 124A     		ldr	r2, .L69
+ 437 002e 1368     		ldr	r3, [r2]
+ 438 0030 1249     		ldr	r1, .L69+4
+ 439 0032 0B40     		ands	r3, r1
+ 440 0034 1360     		str	r3, [r2]
+ 441              	.L63:
+ 442 0036 104A     		ldr	r2, .L69
+ 443 0038 1168     		ldr	r1, [r2]
+ 444 003a 8023     		movs	r3, #128
+ 445 003c 5B02     		lsls	r3, r3, #9
+ 446 003e 0B43     		orrs	r3, r1
+ 447 0040 1360     		str	r3, [r2]
+ 448              	.L64:
+ 449 0042 0D4C     		ldr	r4, .L69
+ 450 0044 2468     		ldr	r4, [r4]
+ 451 0046 A403     		lsls	r4, r4, #14
+ 452 0048 FBD5     		bpl	.L64
+ 453              	.L61:
+ 454 004a 7368     		ldr	r3, [r6, #4]
+ 455 004c 3168     		ldr	r1, [r6]
+ 456 004e 8020     		movs	r0, #128
+ 457 0050 4002     		lsls	r0, r0, #9
+ 458 0052 1843     		orrs	r0, r3
+ 459 0054 FFF7FEFF 		bl	LL_RCC_PLL_ConfigDomain_SYS
+ 460 0058 2900     		movs	r1, r5
+ 461 005a 4046     		mov	r0, r8
+ 462 005c FFF7FEFF 		bl	UTILS_EnablePLLAndSwitchSystem
+ 463              	.L60:
+ 464              		@ sp needed
+ 465 0060 80BC     		pop	{r7}
+ 466 0062 B846     		mov	r8, r7
+ 467 0064 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 468              	.L68:
+ 469 0066 044A     		ldr	r2, .L69
+ 470 0068 1168     		ldr	r1, [r2]
+ 471 006a 8023     		movs	r3, #128
+ 472 006c DB02     		lsls	r3, r3, #11
+ 473 006e 0B43     		orrs	r3, r1
+ 474 0070 1360     		str	r3, [r2]
+ 475 0072 E0E7     		b	.L63
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s 			page 9
+
+
+ 476              	.L65:
+ 477 0074 0120     		movs	r0, #1
+ 478 0076 F3E7     		b	.L60
+ 479              	.L70:
+ 480              		.align	2
+ 481              	.L69:
+ 482 0078 00100240 		.word	1073876992
+ 483 007c FFFFFBFF 		.word	-262145
+ 485              		.global	__aeabi_uidiv
+ 486              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 14.2.1 20241119"
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f0xx_ll_utils.c
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:16     .text.LL_RCC_PLL_ConfigDomain_SYS:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:21     .text.LL_RCC_PLL_ConfigDomain_SYS:00000000 LL_RCC_PLL_ConfigDomain_SYS
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:47     .text.LL_RCC_PLL_ConfigDomain_SYS:00000028 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:51     .text.UTILS_GetPLLOutputFrequency:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:56     .text.UTILS_GetPLLOutputFrequency:00000000 UTILS_GetPLLOutputFrequency
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:74     .text.UTILS_PLL_IsBusy:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:79     .text.UTILS_PLL_IsBusy:00000000 UTILS_PLL_IsBusy
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:97     .text.UTILS_PLL_IsBusy:00000010 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:100    .text.LL_Init1msTick:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:106    .text.LL_Init1msTick:00000000 LL_Init1msTick
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:125    .text.LL_Init1msTick:0000001c $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:128    .text.LL_mDelay:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:134    .text.LL_mDelay:00000000 LL_mDelay
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:162    .text.LL_mDelay:00000024 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:165    .text.LL_SetSystemCoreClock:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:171    .text.LL_SetSystemCoreClock:00000000 LL_SetSystemCoreClock
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:182    .text.LL_SetSystemCoreClock:00000008 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:185    .text.LL_SetFlashLatency:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:191    .text.LL_SetFlashLatency:00000000 LL_SetFlashLatency
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:238    .text.LL_SetFlashLatency:00000040 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:242    .text.UTILS_EnablePLLAndSwitchSystem:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:247    .text.UTILS_EnablePLLAndSwitchSystem:00000000 UTILS_EnablePLLAndSwitchSystem
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:339    .text.UTILS_EnablePLLAndSwitchSystem:000000a0 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:345    .text.LL_PLL_ConfigSystemClock_HSI:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:351    .text.LL_PLL_ConfigSystemClock_HSI:00000000 LL_PLL_ConfigSystemClock_HSI
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:402    .text.LL_PLL_ConfigSystemClock_HSI:00000058 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:407    .text.LL_PLL_ConfigSystemClock_HSE:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:413    .text.LL_PLL_ConfigSystemClock_HSE:00000000 LL_PLL_ConfigSystemClock_HSE
+C:\Users\PHILAS~1\AppData\Local\Temp\cc8Oe9La.s:482    .text.LL_PLL_ConfigSystemClock_HSE:00000078 $d
+
+UNDEFINED SYMBOLS
+__aeabi_uidiv
+SystemCoreClock
+AHBPrescTable

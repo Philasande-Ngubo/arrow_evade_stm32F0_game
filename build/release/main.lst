@@ -1,0 +1,1296 @@
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              		.section	.text.delay,"ax",%progbits
+  16              		.align	1
+  17              		.global	delay
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  22              	delay:
+  23              		@ args = 0, pretend = 0, frame = 8
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 82B0     		sub	sp, sp, #8
+  27 0002 4300     		lsls	r3, r0, #1
+  28 0004 1818     		adds	r0, r3, r0
+  29 0006 0023     		movs	r3, #0
+  30 0008 0193     		str	r3, [sp, #4]
+  31 000a 04E0     		b	.L2
+  32              	.L3:
+  33              		.syntax divided
+  34              	@ 336 "Core/Inc/lcd_stm32f0.c" 1
+  35 000c C046     		nop
+  36              	@ 0 "" 2
+  37              	@ 337 "Core/Inc/lcd_stm32f0.c" 1
+  38 000e C046     		nop
+  39              	@ 0 "" 2
+  40              		.thumb
+  41              		.syntax unified
+  42 0010 019B     		ldr	r3, [sp, #4]
+  43 0012 0133     		adds	r3, r3, #1
+  44 0014 0193     		str	r3, [sp, #4]
+  45              	.L2:
+  46 0016 019B     		ldr	r3, [sp, #4]
+  47 0018 8342     		cmp	r3, r0
+  48 001a F7D3     		bcc	.L3
+  49 001c 02B0     		add	sp, sp, #8
+  50              		@ sp needed
+  51 001e 7047     		bx	lr
+  53              		.section	.text.pulse_strobe,"ax",%progbits
+  54              		.align	1
+  55              		.global	pulse_strobe
+  56              		.syntax unified
+  57              		.code	16
+  58              		.thumb_func
+  60              	pulse_strobe:
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 2
+
+
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 70B5     		push	{r4, r5, r6, lr}
+  64 0002 1420     		movs	r0, #20
+  65 0004 FFF7FEFF 		bl	delay
+  66 0008 0A4C     		ldr	r4, .L5
+  67 000a A369     		ldr	r3, [r4, #24]
+  68 000c 8025     		movs	r5, #128
+  69 000e 2D02     		lsls	r5, r5, #8
+  70 0010 2B43     		orrs	r3, r5
+  71 0012 A361     		str	r3, [r4, #24]
+  72 0014 1420     		movs	r0, #20
+  73 0016 FFF7FEFF 		bl	delay
+  74 001a A269     		ldr	r2, [r4, #24]
+  75 001c 8023     		movs	r3, #128
+  76 001e 1B06     		lsls	r3, r3, #24
+  77 0020 1343     		orrs	r3, r2
+  78 0022 A361     		str	r3, [r4, #24]
+  79 0024 1420     		movs	r0, #20
+  80 0026 FFF7FEFF 		bl	delay
+  81 002a A369     		ldr	r3, [r4, #24]
+  82 002c 1D43     		orrs	r5, r3
+  83 002e A561     		str	r5, [r4, #24]
+  84              		@ sp needed
+  85 0030 70BD     		pop	{r4, r5, r6, pc}
+  86              	.L6:
+  87 0032 C046     		.align	2
+  88              	.L5:
+  89 0034 00080048 		.word	1207961600
+  91              		.section	.text.lcd_putchar,"ax",%progbits
+  92              		.align	1
+  93              		.global	lcd_putchar
+  94              		.syntax unified
+  95              		.code	16
+  96              		.thumb_func
+  98              	lcd_putchar:
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101 0000 10B5     		push	{r4, lr}
+ 102 0002 0400     		movs	r4, r0
+ 103 0004 454A     		ldr	r2, .L25
+ 104 0006 9169     		ldr	r1, [r2, #24]
+ 105 0008 8023     		movs	r3, #128
+ 106 000a DB01     		lsls	r3, r3, #7
+ 107 000c 0B43     		orrs	r3, r1
+ 108 000e 9361     		str	r3, [r2, #24]
+ 109 0010 43B2     		sxtb	r3, r0
+ 110 0012 002B     		cmp	r3, #0
+ 111 0014 46DB     		blt	.L24
+ 112 0016 9022     		movs	r2, #144
+ 113 0018 D205     		lsls	r2, r2, #23
+ 114 001a 9169     		ldr	r1, [r2, #24]
+ 115 001c 8023     		movs	r3, #128
+ 116 001e 1B06     		lsls	r3, r3, #24
+ 117 0020 0B43     		orrs	r3, r1
+ 118 0022 9361     		str	r3, [r2, #24]
+ 119              	.L9:
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 3
+
+
+ 120 0024 6306     		lsls	r3, r4, #25
+ 121 0026 45D5     		bpl	.L10
+ 122 0028 9022     		movs	r2, #144
+ 123 002a D205     		lsls	r2, r2, #23
+ 124 002c 9169     		ldr	r1, [r2, #24]
+ 125 002e 8023     		movs	r3, #128
+ 126 0030 5B01     		lsls	r3, r3, #5
+ 127 0032 0B43     		orrs	r3, r1
+ 128 0034 9361     		str	r3, [r2, #24]
+ 129              	.L11:
+ 130 0036 A306     		lsls	r3, r4, #26
+ 131 0038 44D5     		bpl	.L12
+ 132 003a 394A     		ldr	r2, .L25+4
+ 133 003c 9169     		ldr	r1, [r2, #24]
+ 134 003e 8023     		movs	r3, #128
+ 135 0040 9B00     		lsls	r3, r3, #2
+ 136 0042 0B43     		orrs	r3, r1
+ 137 0044 9361     		str	r3, [r2, #24]
+ 138              	.L13:
+ 139 0046 E306     		lsls	r3, r4, #27
+ 140 0048 43D5     		bpl	.L14
+ 141 004a 354A     		ldr	r2, .L25+4
+ 142 004c 9169     		ldr	r1, [r2, #24]
+ 143 004e 8023     		movs	r3, #128
+ 144 0050 5B00     		lsls	r3, r3, #1
+ 145 0052 0B43     		orrs	r3, r1
+ 146 0054 9361     		str	r3, [r2, #24]
+ 147              	.L15:
+ 148 0056 FFF7FEFF 		bl	pulse_strobe
+ 149 005a 2307     		lsls	r3, r4, #28
+ 150 005c 40D5     		bpl	.L16
+ 151 005e 9022     		movs	r2, #144
+ 152 0060 D205     		lsls	r2, r2, #23
+ 153 0062 9169     		ldr	r1, [r2, #24]
+ 154 0064 8023     		movs	r3, #128
+ 155 0066 1B02     		lsls	r3, r3, #8
+ 156 0068 0B43     		orrs	r3, r1
+ 157 006a 9361     		str	r3, [r2, #24]
+ 158              	.L17:
+ 159 006c 6307     		lsls	r3, r4, #29
+ 160 006e 3FD5     		bpl	.L18
+ 161 0070 9022     		movs	r2, #144
+ 162 0072 D205     		lsls	r2, r2, #23
+ 163 0074 9169     		ldr	r1, [r2, #24]
+ 164 0076 8023     		movs	r3, #128
+ 165 0078 5B01     		lsls	r3, r3, #5
+ 166 007a 0B43     		orrs	r3, r1
+ 167 007c 9361     		str	r3, [r2, #24]
+ 168              	.L19:
+ 169 007e A307     		lsls	r3, r4, #30
+ 170 0080 3ED5     		bpl	.L20
+ 171 0082 274A     		ldr	r2, .L25+4
+ 172 0084 9169     		ldr	r1, [r2, #24]
+ 173 0086 8023     		movs	r3, #128
+ 174 0088 9B00     		lsls	r3, r3, #2
+ 175 008a 0B43     		orrs	r3, r1
+ 176 008c 9361     		str	r3, [r2, #24]
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 4
+
+
+ 177              	.L21:
+ 178 008e E407     		lsls	r4, r4, #31
+ 179 0090 3DD5     		bpl	.L22
+ 180 0092 234A     		ldr	r2, .L25+4
+ 181 0094 9169     		ldr	r1, [r2, #24]
+ 182 0096 8023     		movs	r3, #128
+ 183 0098 5B00     		lsls	r3, r3, #1
+ 184 009a 0B43     		orrs	r3, r1
+ 185 009c 9361     		str	r3, [r2, #24]
+ 186              	.L23:
+ 187 009e FFF7FEFF 		bl	pulse_strobe
+ 188              		@ sp needed
+ 189 00a2 10BD     		pop	{r4, pc}
+ 190              	.L24:
+ 191 00a4 9022     		movs	r2, #144
+ 192 00a6 D205     		lsls	r2, r2, #23
+ 193 00a8 9169     		ldr	r1, [r2, #24]
+ 194 00aa 8023     		movs	r3, #128
+ 195 00ac 1B02     		lsls	r3, r3, #8
+ 196 00ae 0B43     		orrs	r3, r1
+ 197 00b0 9361     		str	r3, [r2, #24]
+ 198 00b2 B7E7     		b	.L9
+ 199              	.L10:
+ 200 00b4 9022     		movs	r2, #144
+ 201 00b6 D205     		lsls	r2, r2, #23
+ 202 00b8 9169     		ldr	r1, [r2, #24]
+ 203 00ba 8023     		movs	r3, #128
+ 204 00bc 5B05     		lsls	r3, r3, #21
+ 205 00be 0B43     		orrs	r3, r1
+ 206 00c0 9361     		str	r3, [r2, #24]
+ 207 00c2 B8E7     		b	.L11
+ 208              	.L12:
+ 209 00c4 164A     		ldr	r2, .L25+4
+ 210 00c6 9169     		ldr	r1, [r2, #24]
+ 211 00c8 8023     		movs	r3, #128
+ 212 00ca 9B04     		lsls	r3, r3, #18
+ 213 00cc 0B43     		orrs	r3, r1
+ 214 00ce 9361     		str	r3, [r2, #24]
+ 215 00d0 B9E7     		b	.L13
+ 216              	.L14:
+ 217 00d2 134A     		ldr	r2, .L25+4
+ 218 00d4 9169     		ldr	r1, [r2, #24]
+ 219 00d6 8023     		movs	r3, #128
+ 220 00d8 5B04     		lsls	r3, r3, #17
+ 221 00da 0B43     		orrs	r3, r1
+ 222 00dc 9361     		str	r3, [r2, #24]
+ 223 00de BAE7     		b	.L15
+ 224              	.L16:
+ 225 00e0 9022     		movs	r2, #144
+ 226 00e2 D205     		lsls	r2, r2, #23
+ 227 00e4 9169     		ldr	r1, [r2, #24]
+ 228 00e6 8023     		movs	r3, #128
+ 229 00e8 1B06     		lsls	r3, r3, #24
+ 230 00ea 0B43     		orrs	r3, r1
+ 231 00ec 9361     		str	r3, [r2, #24]
+ 232 00ee BDE7     		b	.L17
+ 233              	.L18:
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 5
+
+
+ 234 00f0 9022     		movs	r2, #144
+ 235 00f2 D205     		lsls	r2, r2, #23
+ 236 00f4 9169     		ldr	r1, [r2, #24]
+ 237 00f6 8023     		movs	r3, #128
+ 238 00f8 5B05     		lsls	r3, r3, #21
+ 239 00fa 0B43     		orrs	r3, r1
+ 240 00fc 9361     		str	r3, [r2, #24]
+ 241 00fe BEE7     		b	.L19
+ 242              	.L20:
+ 243 0100 074A     		ldr	r2, .L25+4
+ 244 0102 9169     		ldr	r1, [r2, #24]
+ 245 0104 8023     		movs	r3, #128
+ 246 0106 9B04     		lsls	r3, r3, #18
+ 247 0108 0B43     		orrs	r3, r1
+ 248 010a 9361     		str	r3, [r2, #24]
+ 249 010c BFE7     		b	.L21
+ 250              	.L22:
+ 251 010e 044A     		ldr	r2, .L25+4
+ 252 0110 9169     		ldr	r1, [r2, #24]
+ 253 0112 8023     		movs	r3, #128
+ 254 0114 5B04     		lsls	r3, r3, #17
+ 255 0116 0B43     		orrs	r3, r1
+ 256 0118 9361     		str	r3, [r2, #24]
+ 257 011a C0E7     		b	.L23
+ 258              	.L26:
+ 259              		.align	2
+ 260              	.L25:
+ 261 011c 00080048 		.word	1207961600
+ 262 0120 00040048 		.word	1207960576
+ 264              		.section	.text.lcd_putstring,"ax",%progbits
+ 265              		.align	1
+ 266              		.global	lcd_putstring
+ 267              		.syntax unified
+ 268              		.code	16
+ 269              		.thumb_func
+ 271              	lcd_putstring:
+ 272              		@ args = 0, pretend = 0, frame = 0
+ 273              		@ frame_needed = 0, uses_anonymous_args = 0
+ 274 0000 70B5     		push	{r4, r5, r6, lr}
+ 275 0002 0500     		movs	r5, r0
+ 276 0004 0024     		movs	r4, #0
+ 277 0006 03E0     		b	.L28
+ 278              	.L29:
+ 279 0008 FFF7FEFF 		bl	lcd_putchar
+ 280 000c 0134     		adds	r4, r4, #1
+ 281 000e E4B2     		uxtb	r4, r4
+ 282              	.L28:
+ 283 0010 285D     		ldrb	r0, [r5, r4]
+ 284 0012 0028     		cmp	r0, #0
+ 285 0014 F8D1     		bne	.L29
+ 286              		@ sp needed
+ 287 0016 70BD     		pop	{r4, r5, r6, pc}
+ 289              		.section	.text.lcd_command,"ax",%progbits
+ 290              		.align	1
+ 291              		.global	lcd_command
+ 292              		.syntax unified
+ 293              		.code	16
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 6
+
+
+ 294              		.thumb_func
+ 296              	lcd_command:
+ 297              		@ args = 0, pretend = 0, frame = 0
+ 298              		@ frame_needed = 0, uses_anonymous_args = 0
+ 299 0000 10B5     		push	{r4, lr}
+ 300 0002 0400     		movs	r4, r0
+ 301 0004 474A     		ldr	r2, .L48
+ 302 0006 9169     		ldr	r1, [r2, #24]
+ 303 0008 8023     		movs	r3, #128
+ 304 000a DB05     		lsls	r3, r3, #23
+ 305 000c 0B43     		orrs	r3, r1
+ 306 000e 9361     		str	r3, [r2, #24]
+ 307 0010 43B2     		sxtb	r3, r0
+ 308 0012 002B     		cmp	r3, #0
+ 309 0014 49DB     		blt	.L47
+ 310 0016 9022     		movs	r2, #144
+ 311 0018 D205     		lsls	r2, r2, #23
+ 312 001a 9169     		ldr	r1, [r2, #24]
+ 313 001c 8023     		movs	r3, #128
+ 314 001e 1B06     		lsls	r3, r3, #24
+ 315 0020 0B43     		orrs	r3, r1
+ 316 0022 9361     		str	r3, [r2, #24]
+ 317              	.L32:
+ 318 0024 6306     		lsls	r3, r4, #25
+ 319 0026 48D5     		bpl	.L33
+ 320 0028 9022     		movs	r2, #144
+ 321 002a D205     		lsls	r2, r2, #23
+ 322 002c 9169     		ldr	r1, [r2, #24]
+ 323 002e 8023     		movs	r3, #128
+ 324 0030 5B01     		lsls	r3, r3, #5
+ 325 0032 0B43     		orrs	r3, r1
+ 326 0034 9361     		str	r3, [r2, #24]
+ 327              	.L34:
+ 328 0036 A306     		lsls	r3, r4, #26
+ 329 0038 47D5     		bpl	.L35
+ 330 003a 3B4A     		ldr	r2, .L48+4
+ 331 003c 9169     		ldr	r1, [r2, #24]
+ 332 003e 8023     		movs	r3, #128
+ 333 0040 9B00     		lsls	r3, r3, #2
+ 334 0042 0B43     		orrs	r3, r1
+ 335 0044 9361     		str	r3, [r2, #24]
+ 336              	.L36:
+ 337 0046 E306     		lsls	r3, r4, #27
+ 338 0048 46D5     		bpl	.L37
+ 339 004a 374A     		ldr	r2, .L48+4
+ 340 004c 9169     		ldr	r1, [r2, #24]
+ 341 004e 8023     		movs	r3, #128
+ 342 0050 5B00     		lsls	r3, r3, #1
+ 343 0052 0B43     		orrs	r3, r1
+ 344 0054 9361     		str	r3, [r2, #24]
+ 345              	.L38:
+ 346 0056 FFF7FEFF 		bl	pulse_strobe
+ 347 005a 2307     		lsls	r3, r4, #28
+ 348 005c 43D5     		bpl	.L39
+ 349 005e 9022     		movs	r2, #144
+ 350 0060 D205     		lsls	r2, r2, #23
+ 351 0062 9169     		ldr	r1, [r2, #24]
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 7
+
+
+ 352 0064 8023     		movs	r3, #128
+ 353 0066 1B02     		lsls	r3, r3, #8
+ 354 0068 0B43     		orrs	r3, r1
+ 355 006a 9361     		str	r3, [r2, #24]
+ 356              	.L40:
+ 357 006c 6307     		lsls	r3, r4, #29
+ 358 006e 42D5     		bpl	.L41
+ 359 0070 9022     		movs	r2, #144
+ 360 0072 D205     		lsls	r2, r2, #23
+ 361 0074 9169     		ldr	r1, [r2, #24]
+ 362 0076 8023     		movs	r3, #128
+ 363 0078 5B01     		lsls	r3, r3, #5
+ 364 007a 0B43     		orrs	r3, r1
+ 365 007c 9361     		str	r3, [r2, #24]
+ 366              	.L42:
+ 367 007e A307     		lsls	r3, r4, #30
+ 368 0080 41D5     		bpl	.L43
+ 369 0082 294A     		ldr	r2, .L48+4
+ 370 0084 9169     		ldr	r1, [r2, #24]
+ 371 0086 8023     		movs	r3, #128
+ 372 0088 9B00     		lsls	r3, r3, #2
+ 373 008a 0B43     		orrs	r3, r1
+ 374 008c 9361     		str	r3, [r2, #24]
+ 375              	.L44:
+ 376 008e E407     		lsls	r4, r4, #31
+ 377 0090 40D5     		bpl	.L45
+ 378 0092 254A     		ldr	r2, .L48+4
+ 379 0094 9169     		ldr	r1, [r2, #24]
+ 380 0096 8023     		movs	r3, #128
+ 381 0098 5B00     		lsls	r3, r3, #1
+ 382 009a 0B43     		orrs	r3, r1
+ 383 009c 9361     		str	r3, [r2, #24]
+ 384              	.L46:
+ 385 009e FFF7FEFF 		bl	pulse_strobe
+ 386 00a2 2248     		ldr	r0, .L48+8
+ 387 00a4 FFF7FEFF 		bl	delay
+ 388              		@ sp needed
+ 389 00a8 10BD     		pop	{r4, pc}
+ 390              	.L47:
+ 391 00aa 9022     		movs	r2, #144
+ 392 00ac D205     		lsls	r2, r2, #23
+ 393 00ae 9169     		ldr	r1, [r2, #24]
+ 394 00b0 8023     		movs	r3, #128
+ 395 00b2 1B02     		lsls	r3, r3, #8
+ 396 00b4 0B43     		orrs	r3, r1
+ 397 00b6 9361     		str	r3, [r2, #24]
+ 398 00b8 B4E7     		b	.L32
+ 399              	.L33:
+ 400 00ba 9022     		movs	r2, #144
+ 401 00bc D205     		lsls	r2, r2, #23
+ 402 00be 9169     		ldr	r1, [r2, #24]
+ 403 00c0 8023     		movs	r3, #128
+ 404 00c2 5B05     		lsls	r3, r3, #21
+ 405 00c4 0B43     		orrs	r3, r1
+ 406 00c6 9361     		str	r3, [r2, #24]
+ 407 00c8 B5E7     		b	.L34
+ 408              	.L35:
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 8
+
+
+ 409 00ca 174A     		ldr	r2, .L48+4
+ 410 00cc 9169     		ldr	r1, [r2, #24]
+ 411 00ce 8023     		movs	r3, #128
+ 412 00d0 9B04     		lsls	r3, r3, #18
+ 413 00d2 0B43     		orrs	r3, r1
+ 414 00d4 9361     		str	r3, [r2, #24]
+ 415 00d6 B6E7     		b	.L36
+ 416              	.L37:
+ 417 00d8 134A     		ldr	r2, .L48+4
+ 418 00da 9169     		ldr	r1, [r2, #24]
+ 419 00dc 8023     		movs	r3, #128
+ 420 00de 5B04     		lsls	r3, r3, #17
+ 421 00e0 0B43     		orrs	r3, r1
+ 422 00e2 9361     		str	r3, [r2, #24]
+ 423 00e4 B7E7     		b	.L38
+ 424              	.L39:
+ 425 00e6 9022     		movs	r2, #144
+ 426 00e8 D205     		lsls	r2, r2, #23
+ 427 00ea 9169     		ldr	r1, [r2, #24]
+ 428 00ec 8023     		movs	r3, #128
+ 429 00ee 1B06     		lsls	r3, r3, #24
+ 430 00f0 0B43     		orrs	r3, r1
+ 431 00f2 9361     		str	r3, [r2, #24]
+ 432 00f4 BAE7     		b	.L40
+ 433              	.L41:
+ 434 00f6 9022     		movs	r2, #144
+ 435 00f8 D205     		lsls	r2, r2, #23
+ 436 00fa 9169     		ldr	r1, [r2, #24]
+ 437 00fc 8023     		movs	r3, #128
+ 438 00fe 5B05     		lsls	r3, r3, #21
+ 439 0100 0B43     		orrs	r3, r1
+ 440 0102 9361     		str	r3, [r2, #24]
+ 441 0104 BBE7     		b	.L42
+ 442              	.L43:
+ 443 0106 084A     		ldr	r2, .L48+4
+ 444 0108 9169     		ldr	r1, [r2, #24]
+ 445 010a 8023     		movs	r3, #128
+ 446 010c 9B04     		lsls	r3, r3, #18
+ 447 010e 0B43     		orrs	r3, r1
+ 448 0110 9361     		str	r3, [r2, #24]
+ 449 0112 BCE7     		b	.L44
+ 450              	.L45:
+ 451 0114 044A     		ldr	r2, .L48+4
+ 452 0116 9169     		ldr	r1, [r2, #24]
+ 453 0118 8023     		movs	r3, #128
+ 454 011a 5B04     		lsls	r3, r3, #17
+ 455 011c 0B43     		orrs	r3, r1
+ 456 011e 9361     		str	r3, [r2, #24]
+ 457 0120 BDE7     		b	.L46
+ 458              	.L49:
+ 459 0122 C046     		.align	2
+ 460              	.L48:
+ 461 0124 00080048 		.word	1207961600
+ 462 0128 00040048 		.word	1207960576
+ 463 012c B80B0000 		.word	3000
+ 465              		.section	.text.init_LCD,"ax",%progbits
+ 466              		.align	1
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 9
+
+
+ 467              		.global	init_LCD
+ 468              		.syntax unified
+ 469              		.code	16
+ 470              		.thumb_func
+ 472              	init_LCD:
+ 473              		@ args = 0, pretend = 0, frame = 0
+ 474              		@ frame_needed = 0, uses_anonymous_args = 0
+ 475 0000 10B5     		push	{r4, lr}
+ 476 0002 1B4B     		ldr	r3, .L51
+ 477 0004 5969     		ldr	r1, [r3, #20]
+ 478 0006 8022     		movs	r2, #128
+ 479 0008 9202     		lsls	r2, r2, #10
+ 480 000a 0A43     		orrs	r2, r1
+ 481 000c 5A61     		str	r2, [r3, #20]
+ 482 000e 5969     		ldr	r1, [r3, #20]
+ 483 0010 8022     		movs	r2, #128
+ 484 0012 D202     		lsls	r2, r2, #11
+ 485 0014 0A43     		orrs	r2, r1
+ 486 0016 5A61     		str	r2, [r3, #20]
+ 487 0018 5969     		ldr	r1, [r3, #20]
+ 488 001a 8022     		movs	r2, #128
+ 489 001c 1203     		lsls	r2, r2, #12
+ 490 001e 0A43     		orrs	r2, r1
+ 491 0020 5A61     		str	r2, [r3, #20]
+ 492 0022 9022     		movs	r2, #144
+ 493 0024 D205     		lsls	r2, r2, #23
+ 494 0026 1168     		ldr	r1, [r2]
+ 495 0028 8223     		movs	r3, #130
+ 496 002a DB05     		lsls	r3, r3, #23
+ 497 002c 0B43     		orrs	r3, r1
+ 498 002e 1360     		str	r3, [r2]
+ 499 0030 104A     		ldr	r2, .L51+4
+ 500 0032 1168     		ldr	r1, [r2]
+ 501 0034 A023     		movs	r3, #160
+ 502 0036 DB02     		lsls	r3, r3, #11
+ 503 0038 0B43     		orrs	r3, r1
+ 504 003a 1360     		str	r3, [r2]
+ 505 003c 0E4A     		ldr	r2, .L51+8
+ 506 003e 1168     		ldr	r1, [r2]
+ 507 0040 A023     		movs	r3, #160
+ 508 0042 DB05     		lsls	r3, r3, #23
+ 509 0044 0B43     		orrs	r3, r1
+ 510 0046 1360     		str	r3, [r2]
+ 511 0048 0C48     		ldr	r0, .L51+12
+ 512 004a FFF7FEFF 		bl	delay
+ 513 004e 3320     		movs	r0, #51
+ 514 0050 FFF7FEFF 		bl	lcd_command
+ 515 0054 3220     		movs	r0, #50
+ 516 0056 FFF7FEFF 		bl	lcd_command
+ 517 005a 0C20     		movs	r0, #12
+ 518 005c FFF7FEFF 		bl	lcd_command
+ 519 0060 2820     		movs	r0, #40
+ 520 0062 FFF7FEFF 		bl	lcd_command
+ 521 0066 0120     		movs	r0, #1
+ 522 0068 FFF7FEFF 		bl	lcd_command
+ 523              		@ sp needed
+ 524 006c 10BD     		pop	{r4, pc}
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 10
+
+
+ 525              	.L52:
+ 526 006e C046     		.align	2
+ 527              	.L51:
+ 528 0070 00100240 		.word	1073876992
+ 529 0074 00040048 		.word	1207960576
+ 530 0078 00080048 		.word	1207961600
+ 531 007c 30750000 		.word	30000
+ 533              		.section	.text.update_game,"ax",%progbits
+ 534              		.align	1
+ 535              		.global	update_game
+ 536              		.syntax unified
+ 537              		.code	16
+ 538              		.thumb_func
+ 540              	update_game:
+ 541              		@ args = 0, pretend = 0, frame = 0
+ 542              		@ frame_needed = 0, uses_anonymous_args = 0
+ 543 0000 10B5     		push	{r4, lr}
+ 544 0002 0120     		movs	r0, #1
+ 545 0004 FFF7FEFF 		bl	lcd_command
+ 546 0008 0448     		ldr	r0, .L54
+ 547 000a FFF7FEFF 		bl	lcd_putstring
+ 548 000e C020     		movs	r0, #192
+ 549 0010 FFF7FEFF 		bl	lcd_command
+ 550 0014 0248     		ldr	r0, .L54+4
+ 551 0016 FFF7FEFF 		bl	lcd_putstring
+ 552              		@ sp needed
+ 553 001a 10BD     		pop	{r4, pc}
+ 554              	.L55:
+ 555              		.align	2
+ 556              	.L54:
+ 557 001c 00000000 		.word	line_one
+ 558 0020 00000000 		.word	line_two
+ 560              		.section	.rodata.setScore.str1.4,"aMS",%progbits,1
+ 561              		.align	2
+ 562              	.LC2:
+ 563 0000 25303364 		.ascii	"%03d\000"
+ 563      00
+ 564              		.section	.text.setScore,"ax",%progbits
+ 565              		.align	1
+ 566              		.global	setScore
+ 567              		.syntax unified
+ 568              		.code	16
+ 569              		.thumb_func
+ 571              	setScore:
+ 572              		@ args = 0, pretend = 0, frame = 8
+ 573              		@ frame_needed = 0, uses_anonymous_args = 0
+ 574 0000 10B5     		push	{r4, lr}
+ 575 0002 82B0     		sub	sp, sp, #8
+ 576 0004 0200     		movs	r2, r0
+ 577 0006 0849     		ldr	r1, .L57
+ 578 0008 01AC     		add	r4, sp, #4
+ 579 000a 2000     		movs	r0, r4
+ 580 000c FFF7FEFF 		bl	sprintf
+ 581 0010 2278     		ldrb	r2, [r4]
+ 582 0012 064B     		ldr	r3, .L57+4
+ 583 0014 DA71     		strb	r2, [r3, #7]
+ 584 0016 6278     		ldrb	r2, [r4, #1]
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 11
+
+
+ 585 0018 1A72     		strb	r2, [r3, #8]
+ 586 001a A278     		ldrb	r2, [r4, #2]
+ 587 001c 5A72     		strb	r2, [r3, #9]
+ 588 001e FFF7FEFF 		bl	update_game
+ 589 0022 02B0     		add	sp, sp, #8
+ 590              		@ sp needed
+ 591 0024 10BD     		pop	{r4, pc}
+ 592              	.L58:
+ 593 0026 C046     		.align	2
+ 594              	.L57:
+ 595 0028 00000000 		.word	.LC2
+ 596 002c 00000000 		.word	line_one
+ 598              		.section	.text.up,"ax",%progbits
+ 599              		.align	1
+ 600              		.global	up
+ 601              		.syntax unified
+ 602              		.code	16
+ 603              		.thumb_func
+ 605              	up:
+ 606              		@ args = 0, pretend = 0, frame = 0
+ 607              		@ frame_needed = 0, uses_anonymous_args = 0
+ 608 0000 10B5     		push	{r4, lr}
+ 609 0002 044B     		ldr	r3, .L60
+ 610 0004 6F22     		movs	r2, #111
+ 611 0006 DA73     		strb	r2, [r3, #15]
+ 612 0008 034B     		ldr	r3, .L60+4
+ 613 000a 4F3A     		subs	r2, r2, #79
+ 614 000c DA73     		strb	r2, [r3, #15]
+ 615 000e FFF7FEFF 		bl	update_game
+ 616              		@ sp needed
+ 617 0012 10BD     		pop	{r4, pc}
+ 618              	.L61:
+ 619              		.align	2
+ 620              	.L60:
+ 621 0014 00000000 		.word	line_one
+ 622 0018 00000000 		.word	line_two
+ 624              		.section	.text.down,"ax",%progbits
+ 625              		.align	1
+ 626              		.global	down
+ 627              		.syntax unified
+ 628              		.code	16
+ 629              		.thumb_func
+ 631              	down:
+ 632              		@ args = 0, pretend = 0, frame = 0
+ 633              		@ frame_needed = 0, uses_anonymous_args = 0
+ 634 0000 10B5     		push	{r4, lr}
+ 635 0002 044B     		ldr	r3, .L63
+ 636 0004 2022     		movs	r2, #32
+ 637 0006 DA73     		strb	r2, [r3, #15]
+ 638 0008 034B     		ldr	r3, .L63+4
+ 639 000a 4F32     		adds	r2, r2, #79
+ 640 000c DA73     		strb	r2, [r3, #15]
+ 641 000e FFF7FEFF 		bl	update_game
+ 642              		@ sp needed
+ 643 0012 10BD     		pop	{r4, pc}
+ 644              	.L64:
+ 645              		.align	2
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 12
+
+
+ 646              	.L63:
+ 647 0014 00000000 		.word	line_one
+ 648 0018 00000000 		.word	line_two
+ 650              		.section	.text.up_bad,"ax",%progbits
+ 651              		.align	1
+ 652              		.global	up_bad
+ 653              		.syntax unified
+ 654              		.code	16
+ 655              		.thumb_func
+ 657              	up_bad:
+ 658              		@ args = 0, pretend = 0, frame = 0
+ 659              		@ frame_needed = 0, uses_anonymous_args = 0
+ 660              		@ link register save eliminated.
+ 661 0000 064B     		ldr	r3, .L69
+ 662 0002 DB7B     		ldrb	r3, [r3, #15]
+ 663 0004 6F2B     		cmp	r3, #111
+ 664 0006 05D0     		beq	.L67
+ 665 0008 044B     		ldr	r3, .L69
+ 666 000a 1B78     		ldrb	r3, [r3]
+ 667 000c 202B     		cmp	r3, #32
+ 668 000e 03D1     		bne	.L68
+ 669 0010 0020     		movs	r0, #0
+ 670 0012 00E0     		b	.L65
+ 671              	.L67:
+ 672 0014 0020     		movs	r0, #0
+ 673              	.L65:
+ 674              		@ sp needed
+ 675 0016 7047     		bx	lr
+ 676              	.L68:
+ 677 0018 0120     		movs	r0, #1
+ 678 001a FCE7     		b	.L65
+ 679              	.L70:
+ 680              		.align	2
+ 681              	.L69:
+ 682 001c 00000000 		.word	line_one
+ 684              		.section	.rodata.gameOver.str1.4,"aMS",%progbits,1
+ 685              		.align	2
+ 686              	.LC10:
+ 687 0000 47414D45 		.ascii	"GAME OVER (^_^)\000"
+ 687      204F5645 
+ 687      5220285E 
+ 687      5F5E2900 
+ 688              		.align	2
+ 689              	.LC12:
+ 690 0010 5265706C 		.ascii	"Replay: sw4\000"
+ 690      61793A20 
+ 690      73773400 
+ 691              		.section	.text.gameOver,"ax",%progbits
+ 692              		.align	1
+ 693              		.global	gameOver
+ 694              		.syntax unified
+ 695              		.code	16
+ 696              		.thumb_func
+ 698              	gameOver:
+ 699              		@ Volatile: function does not return.
+ 700              		@ args = 0, pretend = 0, frame = 0
+ 701              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 13
+
+
+ 702 0000 10B5     		push	{r4, lr}
+ 703 0002 0120     		movs	r0, #1
+ 704 0004 FFF7FEFF 		bl	lcd_command
+ 705 0008 0448     		ldr	r0, .L73
+ 706 000a FFF7FEFF 		bl	lcd_putstring
+ 707 000e C020     		movs	r0, #192
+ 708 0010 FFF7FEFF 		bl	lcd_command
+ 709 0014 0248     		ldr	r0, .L73+4
+ 710 0016 FFF7FEFF 		bl	lcd_putstring
+ 711              	.L72:
+ 712 001a FEE7     		b	.L72
+ 713              	.L74:
+ 714              		.align	2
+ 715              	.L73:
+ 716 001c 00000000 		.word	.LC10
+ 717 0020 10000000 		.word	.LC12
+ 719              		.section	.text.down_bad,"ax",%progbits
+ 720              		.align	1
+ 721              		.global	down_bad
+ 722              		.syntax unified
+ 723              		.code	16
+ 724              		.thumb_func
+ 726              	down_bad:
+ 727              		@ args = 0, pretend = 0, frame = 0
+ 728              		@ frame_needed = 0, uses_anonymous_args = 0
+ 729              		@ link register save eliminated.
+ 730 0000 064B     		ldr	r3, .L79
+ 731 0002 DB7B     		ldrb	r3, [r3, #15]
+ 732 0004 6F2B     		cmp	r3, #111
+ 733 0006 05D0     		beq	.L77
+ 734 0008 044B     		ldr	r3, .L79
+ 735 000a 1B78     		ldrb	r3, [r3]
+ 736 000c 202B     		cmp	r3, #32
+ 737 000e 03D1     		bne	.L78
+ 738 0010 0020     		movs	r0, #0
+ 739 0012 00E0     		b	.L75
+ 740              	.L77:
+ 741 0014 0020     		movs	r0, #0
+ 742              	.L75:
+ 743              		@ sp needed
+ 744 0016 7047     		bx	lr
+ 745              	.L78:
+ 746 0018 0120     		movs	r0, #1
+ 747 001a FCE7     		b	.L75
+ 748              	.L80:
+ 749              		.align	2
+ 750              	.L79:
+ 751 001c 00000000 		.word	line_two
+ 753              		.section	.text.new_state,"ax",%progbits
+ 754              		.align	1
+ 755              		.global	new_state
+ 756              		.syntax unified
+ 757              		.code	16
+ 758              		.thumb_func
+ 760              	new_state:
+ 761              		@ args = 0, pretend = 0, frame = 0
+ 762              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 14
+
+
+ 763 0000 10B5     		push	{r4, lr}
+ 764 0002 354B     		ldr	r3, .L99
+ 765 0004 9B7B     		ldrb	r3, [r3, #14]
+ 766 0006 7E2B     		cmp	r3, #126
+ 767 0008 15D0     		beq	.L94
+ 768              	.L82:
+ 769 000a 344B     		ldr	r3, .L99+4
+ 770 000c 9B7B     		ldrb	r3, [r3, #14]
+ 771 000e 7E2B     		cmp	r3, #126
+ 772 0010 17D0     		beq	.L95
+ 773              	.L83:
+ 774 0012 C821     		movs	r1, #200
+ 775 0014 FFF7FEFF 		bl	__aeabi_uidiv
+ 776 0018 80B2     		uxth	r0, r0
+ 777 001a FFF7FEFF 		bl	__aeabi_i2f
+ 778 001e 3049     		ldr	r1, .L99+8
+ 779 0020 FFF7FEFF 		bl	__aeabi_fmul
+ 780 0024 FFF7FEFF 		bl	__aeabi_f2uiz
+ 781 0028 C4B2     		uxtb	r4, r0
+ 782 002a 002C     		cmp	r4, #0
+ 783 002c 0FD0     		beq	.L92
+ 784 002e 072C     		cmp	r4, #7
+ 785 0030 0ED9     		bls	.L84
+ 786 0032 0724     		movs	r4, #7
+ 787 0034 0CE0     		b	.L84
+ 788              	.L94:
+ 789 0036 284B     		ldr	r3, .L99
+ 790 0038 DB7B     		ldrb	r3, [r3, #15]
+ 791 003a 6F2B     		cmp	r3, #111
+ 792 003c E5D1     		bne	.L82
+ 793 003e FFF7FEFF 		bl	gameOver
+ 794              	.L95:
+ 795 0042 264B     		ldr	r3, .L99+4
+ 796 0044 DB7B     		ldrb	r3, [r3, #15]
+ 797 0046 6F2B     		cmp	r3, #111
+ 798 0048 E3D1     		bne	.L83
+ 799 004a FFF7FEFF 		bl	gameOver
+ 800              	.L92:
+ 801 004e 0124     		movs	r4, #1
+ 802              	.L84:
+ 803 0050 0F23     		movs	r3, #15
+ 804 0052 06E0     		b	.L85
+ 805              	.L87:
+ 806 0054 0B2B     		cmp	r3, #11
+ 807 0056 1ED8     		bhi	.L96
+ 808              	.L86:
+ 809 0058 5A1E     		subs	r2, r3, #1
+ 810 005a 2049     		ldr	r1, .L99+4
+ 811 005c 885C     		ldrb	r0, [r1, r2]
+ 812 005e C854     		strb	r0, [r1, r3]
+ 813 0060 D3B2     		uxtb	r3, r2
+ 814              	.L85:
+ 815 0062 002B     		cmp	r3, #0
+ 816 0064 F6D1     		bne	.L87
+ 817 0066 1D4B     		ldr	r3, .L99+4
+ 818 0068 2022     		movs	r2, #32
+ 819 006a 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 15
+
+
+ 820 006c 1A4B     		ldr	r3, .L99
+ 821 006e DA72     		strb	r2, [r3, #11]
+ 822 0070 DB7B     		ldrb	r3, [r3, #15]
+ 823 0072 6F2B     		cmp	r3, #111
+ 824 0074 14D0     		beq	.L97
+ 825 0076 194B     		ldr	r3, .L99+4
+ 826 0078 6F22     		movs	r2, #111
+ 827 007a DA73     		strb	r2, [r3, #15]
+ 828              	.L89:
+ 829 007c FFF7FEFF 		bl	rand
+ 830 0080 0A21     		movs	r1, #10
+ 831 0082 FFF7FEFF 		bl	__aeabi_idivmod
+ 832 0086 CBB2     		uxtb	r3, r1
+ 833 0088 0133     		adds	r3, r3, #1
+ 834 008a DBB2     		uxtb	r3, r3
+ 835 008c 9C42     		cmp	r4, r3
+ 836 008e 0BD3     		bcc	.L98
+ 837              	.L90:
+ 838 0090 FFF7FEFF 		bl	update_game
+ 839              		@ sp needed
+ 840 0094 10BD     		pop	{r4, pc}
+ 841              	.L96:
+ 842 0096 5A1E     		subs	r2, r3, #1
+ 843 0098 0F49     		ldr	r1, .L99
+ 844 009a 8A5C     		ldrb	r2, [r1, r2]
+ 845 009c CA54     		strb	r2, [r1, r3]
+ 846 009e DBE7     		b	.L86
+ 847              	.L97:
+ 848 00a0 0D4B     		ldr	r3, .L99
+ 849 00a2 4F32     		adds	r2, r2, #79
+ 850 00a4 1A70     		strb	r2, [r3]
+ 851 00a6 E9E7     		b	.L89
+ 852              	.L98:
+ 853 00a8 FFF7FEFF 		bl	rand
+ 854 00ac C217     		asrs	r2, r0, #31
+ 855 00ae 920F     		lsrs	r2, r2, #30
+ 856 00b0 8018     		adds	r0, r0, r2
+ 857 00b2 0323     		movs	r3, #3
+ 858 00b4 0340     		ands	r3, r0
+ 859 00b6 9B1A     		subs	r3, r3, r2
+ 860 00b8 DBB2     		uxtb	r3, r3
+ 861 00ba 002B     		cmp	r3, #0
+ 862 00bc 07D1     		bne	.L91
+ 863 00be 074B     		ldr	r3, .L99+4
+ 864 00c0 DB7A     		ldrb	r3, [r3, #11]
+ 865 00c2 202B     		cmp	r3, #32
+ 866 00c4 E4D1     		bne	.L90
+ 867 00c6 044B     		ldr	r3, .L99
+ 868 00c8 7E22     		movs	r2, #126
+ 869 00ca DA72     		strb	r2, [r3, #11]
+ 870 00cc E0E7     		b	.L90
+ 871              	.L91:
+ 872 00ce 034B     		ldr	r3, .L99+4
+ 873 00d0 7E22     		movs	r2, #126
+ 874 00d2 1A70     		strb	r2, [r3]
+ 875 00d4 DCE7     		b	.L90
+ 876              	.L100:
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 16
+
+
+ 877 00d6 C046     		.align	2
+ 878              	.L99:
+ 879 00d8 00000000 		.word	line_one
+ 880 00dc 00000000 		.word	line_two
+ 881 00e0 00002041 		.word	1092616192
+ 883              		.section	.rodata.init_game.str1.4,"aMS",%progbits,1
+ 884              		.align	2
+ 885              	.LC17:
+ 886 0000 57656C63 		.ascii	"Welcome to\000"
+ 886      6F6D6520 
+ 886      746F00
+ 887 000b 00       		.align	2
+ 888              	.LC19:
+ 889 000c 76696B61 		.ascii	"vika ingozi !!!\000"
+ 889      20696E67 
+ 889      6F7A6920 
+ 889      21212100 
+ 890              		.align	2
+ 891              	.LC21:
+ 892 001c 45766164 		.ascii	"Evade arrows\000"
+ 892      65206172 
+ 892      726F7773 
+ 892      00
+ 893 0029 000000   		.align	2
+ 894              	.LC23:
+ 895 002c 616E6420 		.ascii	"and survive!!!\000"
+ 895      73757276 
+ 895      69766521 
+ 895      212100
+ 896 003b 00       		.align	2
+ 897              	.LC25:
+ 898 003c 5570203A 		.ascii	"Up : sw1\000"
+ 898      20737731 
+ 898      00
+ 899 0045 000000   		.align	2
+ 900              	.LC27:
+ 901 0048 446F776E 		.ascii	"Down : sw3\000"
+ 901      203A2073 
+ 901      773300
+ 902 0053 00       		.align	2
+ 903              	.LC29:
+ 904 0054 52656164 		.ascii	"Ready?\000"
+ 904      793F00
+ 905 005b 00       		.align	2
+ 906              	.LC31:
+ 907 005c 73746172 		.ascii	"start: sw2\000"
+ 907      743A2073 
+ 907      773200
+ 908 0067 00       		.align	2
+ 909              	.LC33:
+ 910 0068 53746172 		.ascii	"Starting in\000"
+ 910      74696E67 
+ 910      20696E00 
+ 911              		.align	2
+ 912              	.LC35:
+ 913 0074 3500     		.ascii	"5\000"
+ 914 0076 0000     		.align	2
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 17
+
+
+ 915              	.LC37:
+ 916 0078 3400     		.ascii	"4\000"
+ 917 007a 0000     		.align	2
+ 918              	.LC39:
+ 919 007c 3300     		.ascii	"3\000"
+ 920 007e 0000     		.align	2
+ 921              	.LC41:
+ 922 0080 3200     		.ascii	"2\000"
+ 923 0082 0000     		.align	2
+ 924              	.LC43:
+ 925 0084 3100     		.ascii	"1\000"
+ 926              		.section	.text.init_game,"ax",%progbits
+ 927              		.align	1
+ 928              		.global	init_game
+ 929              		.syntax unified
+ 930              		.code	16
+ 931              		.thumb_func
+ 933              	init_game:
+ 934              		@ args = 0, pretend = 0, frame = 0
+ 935              		@ frame_needed = 0, uses_anonymous_args = 0
+ 936 0000 70B5     		push	{r4, r5, r6, lr}
+ 937 0002 0120     		movs	r0, #1
+ 938 0004 FFF7FEFF 		bl	lcd_command
+ 939 0008 4448     		ldr	r0, .L104
+ 940 000a FFF7FEFF 		bl	lcd_putstring
+ 941 000e C020     		movs	r0, #192
+ 942 0010 FFF7FEFF 		bl	lcd_command
+ 943 0014 4248     		ldr	r0, .L104+4
+ 944 0016 FFF7FEFF 		bl	lcd_putstring
+ 945 001a 424C     		ldr	r4, .L104+8
+ 946 001c 2000     		movs	r0, r4
+ 947 001e FFF7FEFF 		bl	delay
+ 948 0022 0120     		movs	r0, #1
+ 949 0024 FFF7FEFF 		bl	lcd_command
+ 950 0028 3F48     		ldr	r0, .L104+12
+ 951 002a FFF7FEFF 		bl	lcd_putstring
+ 952 002e C020     		movs	r0, #192
+ 953 0030 FFF7FEFF 		bl	lcd_command
+ 954 0034 3D48     		ldr	r0, .L104+16
+ 955 0036 FFF7FEFF 		bl	lcd_putstring
+ 956 003a 2000     		movs	r0, r4
+ 957 003c FFF7FEFF 		bl	delay
+ 958 0040 0120     		movs	r0, #1
+ 959 0042 FFF7FEFF 		bl	lcd_command
+ 960 0046 3A48     		ldr	r0, .L104+20
+ 961 0048 FFF7FEFF 		bl	lcd_putstring
+ 962 004c C020     		movs	r0, #192
+ 963 004e FFF7FEFF 		bl	lcd_command
+ 964 0052 3848     		ldr	r0, .L104+24
+ 965 0054 FFF7FEFF 		bl	lcd_putstring
+ 966 0058 2000     		movs	r0, r4
+ 967 005a FFF7FEFF 		bl	delay
+ 968 005e 0120     		movs	r0, #1
+ 969 0060 FFF7FEFF 		bl	lcd_command
+ 970 0064 3448     		ldr	r0, .L104+28
+ 971 0066 FFF7FEFF 		bl	lcd_putstring
+ 972 006a C020     		movs	r0, #192
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 18
+
+
+ 973 006c FFF7FEFF 		bl	lcd_command
+ 974 0070 3248     		ldr	r0, .L104+32
+ 975 0072 FFF7FEFF 		bl	lcd_putstring
+ 976              	.L102:
+ 977 0076 9023     		movs	r3, #144
+ 978 0078 DB05     		lsls	r3, r3, #23
+ 979 007a 1B69     		ldr	r3, [r3, #16]
+ 980 007c 5B07     		lsls	r3, r3, #29
+ 981 007e FAD4     		bmi	.L102
+ 982 0080 0120     		movs	r0, #1
+ 983 0082 FFF7FEFF 		bl	lcd_command
+ 984 0086 2E4D     		ldr	r5, .L104+36
+ 985 0088 2800     		movs	r0, r5
+ 986 008a FFF7FEFF 		bl	lcd_putstring
+ 987 008e C020     		movs	r0, #192
+ 988 0090 FFF7FEFF 		bl	lcd_command
+ 989 0094 2B48     		ldr	r0, .L104+40
+ 990 0096 FFF7FEFF 		bl	lcd_putstring
+ 991 009a 2B4C     		ldr	r4, .L104+44
+ 992 009c 2000     		movs	r0, r4
+ 993 009e FFF7FEFF 		bl	delay
+ 994 00a2 0120     		movs	r0, #1
+ 995 00a4 FFF7FEFF 		bl	lcd_command
+ 996 00a8 2800     		movs	r0, r5
+ 997 00aa FFF7FEFF 		bl	lcd_putstring
+ 998 00ae C020     		movs	r0, #192
+ 999 00b0 FFF7FEFF 		bl	lcd_command
+ 1000 00b4 2548     		ldr	r0, .L104+48
+ 1001 00b6 FFF7FEFF 		bl	lcd_putstring
+ 1002 00ba 2000     		movs	r0, r4
+ 1003 00bc FFF7FEFF 		bl	delay
+ 1004 00c0 0120     		movs	r0, #1
+ 1005 00c2 FFF7FEFF 		bl	lcd_command
+ 1006 00c6 2800     		movs	r0, r5
+ 1007 00c8 FFF7FEFF 		bl	lcd_putstring
+ 1008 00cc C020     		movs	r0, #192
+ 1009 00ce FFF7FEFF 		bl	lcd_command
+ 1010 00d2 1F48     		ldr	r0, .L104+52
+ 1011 00d4 FFF7FEFF 		bl	lcd_putstring
+ 1012 00d8 2000     		movs	r0, r4
+ 1013 00da FFF7FEFF 		bl	delay
+ 1014 00de 0120     		movs	r0, #1
+ 1015 00e0 FFF7FEFF 		bl	lcd_command
+ 1016 00e4 2800     		movs	r0, r5
+ 1017 00e6 FFF7FEFF 		bl	lcd_putstring
+ 1018 00ea C020     		movs	r0, #192
+ 1019 00ec FFF7FEFF 		bl	lcd_command
+ 1020 00f0 1848     		ldr	r0, .L104+56
+ 1021 00f2 FFF7FEFF 		bl	lcd_putstring
+ 1022 00f6 2000     		movs	r0, r4
+ 1023 00f8 FFF7FEFF 		bl	delay
+ 1024 00fc 0120     		movs	r0, #1
+ 1025 00fe FFF7FEFF 		bl	lcd_command
+ 1026 0102 2800     		movs	r0, r5
+ 1027 0104 FFF7FEFF 		bl	lcd_putstring
+ 1028 0108 C020     		movs	r0, #192
+ 1029 010a FFF7FEFF 		bl	lcd_command
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 19
+
+
+ 1030 010e 1248     		ldr	r0, .L104+60
+ 1031 0110 FFF7FEFF 		bl	lcd_putstring
+ 1032 0114 2000     		movs	r0, r4
+ 1033 0116 FFF7FEFF 		bl	delay
+ 1034              		@ sp needed
+ 1035 011a 70BD     		pop	{r4, r5, r6, pc}
+ 1036              	.L105:
+ 1037              		.align	2
+ 1038              	.L104:
+ 1039 011c 00000000 		.word	.LC17
+ 1040 0120 0C000000 		.word	.LC19
+ 1041 0124 E0930400 		.word	300000
+ 1042 0128 1C000000 		.word	.LC21
+ 1043 012c 2C000000 		.word	.LC23
+ 1044 0130 3C000000 		.word	.LC25
+ 1045 0134 48000000 		.word	.LC27
+ 1046 0138 54000000 		.word	.LC29
+ 1047 013c 5C000000 		.word	.LC31
+ 1048 0140 68000000 		.word	.LC33
+ 1049 0144 74000000 		.word	.LC35
+ 1050 0148 F0490200 		.word	150000
+ 1051 014c 78000000 		.word	.LC37
+ 1052 0150 7C000000 		.word	.LC39
+ 1053 0154 80000000 		.word	.LC41
+ 1054 0158 84000000 		.word	.LC43
+ 1056              		.section	.text.main,"ax",%progbits
+ 1057              		.align	1
+ 1058              		.global	main
+ 1059              		.syntax unified
+ 1060              		.code	16
+ 1061              		.thumb_func
+ 1063              	main:
+ 1064              		@ args = 0, pretend = 0, frame = 0
+ 1065              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1066 0000 70B5     		push	{r4, r5, r6, lr}
+ 1067 0002 254A     		ldr	r2, .L112
+ 1068 0004 5169     		ldr	r1, [r2, #20]
+ 1069 0006 8023     		movs	r3, #128
+ 1070 0008 9B02     		lsls	r3, r3, #10
+ 1071 000a 0B43     		orrs	r3, r1
+ 1072 000c 5361     		str	r3, [r2, #20]
+ 1073 000e 9023     		movs	r3, #144
+ 1074 0010 DB05     		lsls	r3, r3, #23
+ 1075 0012 DA68     		ldr	r2, [r3, #12]
+ 1076 0014 1021     		movs	r1, #16
+ 1077 0016 0A43     		orrs	r2, r1
+ 1078 0018 DA60     		str	r2, [r3, #12]
+ 1079 001a DA68     		ldr	r2, [r3, #12]
+ 1080 001c 0C39     		subs	r1, r1, #12
+ 1081 001e 0A43     		orrs	r2, r1
+ 1082 0020 DA60     		str	r2, [r3, #12]
+ 1083 0022 DA68     		ldr	r2, [r3, #12]
+ 1084 0024 3C31     		adds	r1, r1, #60
+ 1085 0026 0A43     		orrs	r2, r1
+ 1086 0028 DA60     		str	r2, [r3, #12]
+ 1087 002a FFF7FEFF 		bl	init_LCD
+ 1088 002e FFF7FEFF 		bl	init_game
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 20
+
+
+ 1089 0032 FFF7FEFF 		bl	update_game
+ 1090 0036 194D     		ldr	r5, .L112+4
+ 1091 0038 0024     		movs	r4, #0
+ 1092 003a 24E0     		b	.L109
+ 1093              	.L107:
+ 1094 003c 9023     		movs	r3, #144
+ 1095 003e DB05     		lsls	r3, r3, #23
+ 1096 0040 1B69     		ldr	r3, [r3, #16]
+ 1097 0042 1B07     		lsls	r3, r3, #28
+ 1098 0044 01D4     		bmi	.L108
+ 1099 0046 FFF7FEFF 		bl	down
+ 1100              	.L108:
+ 1101 004a 0134     		adds	r4, r4, #1
+ 1102 004c A4B2     		uxth	r4, r4
+ 1103 004e 2800     		movs	r0, r5
+ 1104 0050 FFF7FEFF 		bl	delay
+ 1105 0054 2000     		movs	r0, r4
+ 1106 0056 FFF7FEFF 		bl	new_state
+ 1107 005a 2000     		movs	r0, r4
+ 1108 005c FFF7FEFF 		bl	setScore
+ 1109 0060 2000     		movs	r0, r4
+ 1110 0062 FFF7FEFF 		bl	__aeabi_ui2f
+ 1111 0066 0E49     		ldr	r1, .L112+8
+ 1112 0068 FFF7FEFF 		bl	__aeabi_fdiv
+ 1113 006c 0D49     		ldr	r1, .L112+12
+ 1114 006e FFF7FEFF 		bl	__aeabi_fmul
+ 1115 0072 061C     		adds	r6, r0, #0
+ 1116 0074 2800     		movs	r0, r5
+ 1117 0076 FFF7FEFF 		bl	__aeabi_i2f
+ 1118 007a 311C     		adds	r1, r6, #0
+ 1119 007c FFF7FEFF 		bl	__aeabi_fsub
+ 1120 0080 FFF7FEFF 		bl	__aeabi_f2iz
+ 1121 0084 0500     		movs	r5, r0
+ 1122              	.L109:
+ 1123 0086 9023     		movs	r3, #144
+ 1124 0088 DB05     		lsls	r3, r3, #23
+ 1125 008a 1B69     		ldr	r3, [r3, #16]
+ 1126 008c 9B07     		lsls	r3, r3, #30
+ 1127 008e D5D4     		bmi	.L107
+ 1128 0090 FFF7FEFF 		bl	up
+ 1129 0094 D2E7     		b	.L107
+ 1130              	.L113:
+ 1131 0096 C046     		.align	2
+ 1132              	.L112:
+ 1133 0098 00100240 		.word	1073876992
+ 1134 009c E0930400 		.word	300000
+ 1135 00a0 0000C842 		.word	1120403456
+ 1136 00a4 00007A44 		.word	1148846080
+ 1138              		.global	line_two
+ 1139              		.section	.data.line_two,"aw"
+ 1140              		.align	2
+ 1143              	line_two:
+ 1144 0000 20202020 		.ascii	"               o\000"
+ 1144      20202020 
+ 1144      20202020 
+ 1144      2020206F 
+ 1144      00
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 21
+
+
+ 1145              		.global	line_one
+ 1146              		.section	.data.line_one,"aw"
+ 1147              		.align	2
+ 1150              	line_one:
+ 1151 0000 73636F72 		.ascii	"score: 000      \000"
+ 1151      653A2030 
+ 1151      30302020 
+ 1151      20202020 
+ 1151      00
+ 1152              		.global	__aeabi_f2iz
+ 1153              		.global	__aeabi_fsub
+ 1154              		.global	__aeabi_fdiv
+ 1155              		.global	__aeabi_ui2f
+ 1156              		.global	__aeabi_idivmod
+ 1157              		.global	__aeabi_f2uiz
+ 1158              		.global	__aeabi_fmul
+ 1159              		.global	__aeabi_i2f
+ 1160              		.global	__aeabi_uidiv
+ 1161              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 14.2.1 20241119"
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:16     .text.delay:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:22     .text.delay:00000000 delay
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:54     .text.pulse_strobe:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:60     .text.pulse_strobe:00000000 pulse_strobe
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:89     .text.pulse_strobe:00000034 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:92     .text.lcd_putchar:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:98     .text.lcd_putchar:00000000 lcd_putchar
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:261    .text.lcd_putchar:0000011c $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:265    .text.lcd_putstring:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:271    .text.lcd_putstring:00000000 lcd_putstring
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:290    .text.lcd_command:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:296    .text.lcd_command:00000000 lcd_command
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:461    .text.lcd_command:00000124 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:466    .text.init_LCD:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:472    .text.init_LCD:00000000 init_LCD
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:528    .text.init_LCD:00000070 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:534    .text.update_game:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:540    .text.update_game:00000000 update_game
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:557    .text.update_game:0000001c $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:1150   .data.line_one:00000000 line_one
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:1143   .data.line_two:00000000 line_two
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:561    .rodata.setScore.str1.4:00000000 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:565    .text.setScore:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:571    .text.setScore:00000000 setScore
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:595    .text.setScore:00000028 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:599    .text.up:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:605    .text.up:00000000 up
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:621    .text.up:00000014 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:625    .text.down:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:631    .text.down:00000000 down
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:647    .text.down:00000014 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:651    .text.up_bad:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:657    .text.up_bad:00000000 up_bad
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:682    .text.up_bad:0000001c $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:685    .rodata.gameOver.str1.4:00000000 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:692    .text.gameOver:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:698    .text.gameOver:00000000 gameOver
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:716    .text.gameOver:0000001c $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:720    .text.down_bad:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:726    .text.down_bad:00000000 down_bad
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:751    .text.down_bad:0000001c $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:754    .text.new_state:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:760    .text.new_state:00000000 new_state
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:879    .text.new_state:000000d8 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:884    .rodata.init_game.str1.4:00000000 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:927    .text.init_game:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:933    .text.init_game:00000000 init_game
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:1039   .text.init_game:0000011c $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:1057   .text.main:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:1063   .text.main:00000000 main
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:1133   .text.main:00000098 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:1140   .data.line_two:00000000 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s:1147   .data.line_one:00000000 $d
+
+UNDEFINED SYMBOLS
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccjTqRv5.s 			page 23
+
+
+sprintf
+__aeabi_uidiv
+__aeabi_i2f
+__aeabi_fmul
+__aeabi_f2uiz
+rand
+__aeabi_idivmod
+__aeabi_ui2f
+__aeabi_fdiv
+__aeabi_fsub
+__aeabi_f2iz

@@ -1,0 +1,1 @@
+build/debug/main.o build/debug/stm32f0xx_it.o build/debug/stm32f0xx_ll_exti.o build/debug/stm32f0xx_ll_gpio.o build/debug/stm32f0xx_ll_pwr.o build/debug/stm32f0xx_ll_rcc.o build/debug/stm32f0xx_ll_utils.o build/debug/system_stm32f0xx.o  build/debug/startup_stm32f051x8.o 

@@ -1,0 +1,287 @@
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f0xx_ll_gpio.c"
+  14              		.text
+  15              		.section	.text.LL_GPIO_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	LL_GPIO_DeInit
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  22              	LL_GPIO_DeInit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 9023     		movs	r3, #144
+  27 0002 DB05     		lsls	r3, r3, #23
+  28 0004 9842     		cmp	r0, r3
+  29 0006 0DD0     		beq	.L8
+  30 0008 244B     		ldr	r3, .L13
+  31 000a 9842     		cmp	r0, r3
+  32 000c 16D0     		beq	.L9
+  33 000e 244B     		ldr	r3, .L13+4
+  34 0010 9842     		cmp	r0, r3
+  35 0012 1FD0     		beq	.L10
+  36 0014 234B     		ldr	r3, .L13+8
+  37 0016 9842     		cmp	r0, r3
+  38 0018 28D0     		beq	.L11
+  39 001a 234B     		ldr	r3, .L13+12
+  40 001c 9842     		cmp	r0, r3
+  41 001e 31D0     		beq	.L12
+  42 0020 0120     		movs	r0, #1
+  43 0022 0AE0     		b	.L3
+  44              	.L8:
+  45 0024 214B     		ldr	r3, .L13+16
+  46 0026 996A     		ldr	r1, [r3, #40]
+  47 0028 8022     		movs	r2, #128
+  48 002a 9202     		lsls	r2, r2, #10
+  49 002c 0A43     		orrs	r2, r1
+  50 002e 9A62     		str	r2, [r3, #40]
+  51 0030 9A6A     		ldr	r2, [r3, #40]
+  52 0032 1F49     		ldr	r1, .L13+20
+  53 0034 0A40     		ands	r2, r1
+  54 0036 9A62     		str	r2, [r3, #40]
+  55 0038 0020     		movs	r0, #0
+  56              	.L3:
+  57              		@ sp needed
+  58 003a 7047     		bx	lr
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s 			page 2
+
+
+  59              	.L9:
+  60 003c 1B4B     		ldr	r3, .L13+16
+  61 003e 996A     		ldr	r1, [r3, #40]
+  62 0040 8022     		movs	r2, #128
+  63 0042 D202     		lsls	r2, r2, #11
+  64 0044 0A43     		orrs	r2, r1
+  65 0046 9A62     		str	r2, [r3, #40]
+  66 0048 9A6A     		ldr	r2, [r3, #40]
+  67 004a 1A49     		ldr	r1, .L13+24
+  68 004c 0A40     		ands	r2, r1
+  69 004e 9A62     		str	r2, [r3, #40]
+  70 0050 0020     		movs	r0, #0
+  71 0052 F2E7     		b	.L3
+  72              	.L10:
+  73 0054 154B     		ldr	r3, .L13+16
+  74 0056 996A     		ldr	r1, [r3, #40]
+  75 0058 8022     		movs	r2, #128
+  76 005a 1203     		lsls	r2, r2, #12
+  77 005c 0A43     		orrs	r2, r1
+  78 005e 9A62     		str	r2, [r3, #40]
+  79 0060 9A6A     		ldr	r2, [r3, #40]
+  80 0062 1549     		ldr	r1, .L13+28
+  81 0064 0A40     		ands	r2, r1
+  82 0066 9A62     		str	r2, [r3, #40]
+  83 0068 0020     		movs	r0, #0
+  84 006a E6E7     		b	.L3
+  85              	.L11:
+  86 006c 0F4B     		ldr	r3, .L13+16
+  87 006e 996A     		ldr	r1, [r3, #40]
+  88 0070 8022     		movs	r2, #128
+  89 0072 5203     		lsls	r2, r2, #13
+  90 0074 0A43     		orrs	r2, r1
+  91 0076 9A62     		str	r2, [r3, #40]
+  92 0078 9A6A     		ldr	r2, [r3, #40]
+  93 007a 1049     		ldr	r1, .L13+32
+  94 007c 0A40     		ands	r2, r1
+  95 007e 9A62     		str	r2, [r3, #40]
+  96 0080 0020     		movs	r0, #0
+  97 0082 DAE7     		b	.L3
+  98              	.L12:
+  99 0084 094B     		ldr	r3, .L13+16
+ 100 0086 996A     		ldr	r1, [r3, #40]
+ 101 0088 8022     		movs	r2, #128
+ 102 008a D203     		lsls	r2, r2, #15
+ 103 008c 0A43     		orrs	r2, r1
+ 104 008e 9A62     		str	r2, [r3, #40]
+ 105 0090 9A6A     		ldr	r2, [r3, #40]
+ 106 0092 0B49     		ldr	r1, .L13+36
+ 107 0094 0A40     		ands	r2, r1
+ 108 0096 9A62     		str	r2, [r3, #40]
+ 109 0098 0020     		movs	r0, #0
+ 110 009a CEE7     		b	.L3
+ 111              	.L14:
+ 112              		.align	2
+ 113              	.L13:
+ 114 009c 00040048 		.word	1207960576
+ 115 00a0 00080048 		.word	1207961600
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s 			page 3
+
+
+ 116 00a4 000C0048 		.word	1207962624
+ 117 00a8 00140048 		.word	1207964672
+ 118 00ac 00100240 		.word	1073876992
+ 119 00b0 FFFFFDFF 		.word	-131073
+ 120 00b4 FFFFFBFF 		.word	-262145
+ 121 00b8 FFFFF7FF 		.word	-524289
+ 122 00bc FFFFEFFF 		.word	-1048577
+ 123 00c0 FFFFBFFF 		.word	-4194305
+ 125              		.section	.text.LL_GPIO_Init,"ax",%progbits
+ 126              		.align	1
+ 127              		.global	LL_GPIO_Init
+ 128              		.syntax unified
+ 129              		.code	16
+ 130              		.thumb_func
+ 132              	LL_GPIO_Init:
+ 133              		@ args = 0, pretend = 0, frame = 0
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 136 0002 0022     		movs	r2, #0
+ 137 0004 16E0     		b	.L16
+ 138              	.L18:
+ 139 0006 0B69     		ldr	r3, [r1, #16]
+ 140 0008 9C46     		mov	ip, r3
+ 141 000a C468     		ldr	r4, [r0, #12]
+ 142 000c 2B00     		movs	r3, r5
+ 143 000e 6B43     		muls	r3, r5
+ 144 0010 5E00     		lsls	r6, r3, #1
+ 145 0012 F618     		adds	r6, r6, r3
+ 146 0014 F743     		mvns	r7, r6
+ 147 0016 B443     		bics	r4, r6
+ 148 0018 6646     		mov	r6, ip
+ 149 001a 5E43     		muls	r6, r3
+ 150 001c 3443     		orrs	r4, r6
+ 151 001e C460     		str	r4, [r0, #12]
+ 152 0020 4C68     		ldr	r4, [r1, #4]
+ 153 0022 022C     		cmp	r4, #2
+ 154 0024 26D0     		beq	.L22
+ 155              	.L19:
+ 156 0026 4D68     		ldr	r5, [r1, #4]
+ 157 0028 0468     		ldr	r4, [r0]
+ 158 002a 3C40     		ands	r4, r7
+ 159 002c 6B43     		muls	r3, r5
+ 160 002e 2343     		orrs	r3, r4
+ 161 0030 0360     		str	r3, [r0]
+ 162              	.L17:
+ 163 0032 0132     		adds	r2, r2, #1
+ 164              	.L16:
+ 165 0034 0C68     		ldr	r4, [r1]
+ 166 0036 2300     		movs	r3, r4
+ 167 0038 D340     		lsrs	r3, r3, r2
+ 168 003a 3BD0     		beq	.L23
+ 169 003c 0123     		movs	r3, #1
+ 170 003e 9340     		lsls	r3, r3, r2
+ 171 0040 2500     		movs	r5, r4
+ 172 0042 1D40     		ands	r5, r3
+ 173 0044 1C42     		tst	r4, r3
+ 174 0046 F4D0     		beq	.L17
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s 			page 4
+
+
+ 175 0048 4B68     		ldr	r3, [r1, #4]
+ 176 004a 013B     		subs	r3, r3, #1
+ 177 004c 012B     		cmp	r3, #1
+ 178 004e DAD8     		bhi	.L18
+ 179 0050 8F68     		ldr	r7, [r1, #8]
+ 180 0052 8368     		ldr	r3, [r0, #8]
+ 181 0054 2C00     		movs	r4, r5
+ 182 0056 6C43     		muls	r4, r5
+ 183 0058 6600     		lsls	r6, r4, #1
+ 184 005a 3619     		adds	r6, r6, r4
+ 185 005c B343     		bics	r3, r6
+ 186 005e 7C43     		muls	r4, r7
+ 187 0060 2343     		orrs	r3, r4
+ 188 0062 8360     		str	r3, [r0, #8]
+ 189 0064 0E68     		ldr	r6, [r1]
+ 190 0066 CC68     		ldr	r4, [r1, #12]
+ 191 0068 4368     		ldr	r3, [r0, #4]
+ 192 006a B343     		bics	r3, r6
+ 193 006c 7443     		muls	r4, r6
+ 194 006e 2343     		orrs	r3, r4
+ 195 0070 4360     		str	r3, [r0, #4]
+ 196 0072 C8E7     		b	.L18
+ 197              	.L22:
+ 198 0074 FF2D     		cmp	r5, #255
+ 199 0076 0DD8     		bhi	.L20
+ 200 0078 4C69     		ldr	r4, [r1, #20]
+ 201 007a A446     		mov	ip, r4
+ 202 007c 066A     		ldr	r6, [r0, #32]
+ 203 007e 1C00     		movs	r4, r3
+ 204 0080 6C43     		muls	r4, r5
+ 205 0082 6C43     		muls	r4, r5
+ 206 0084 2501     		lsls	r5, r4, #4
+ 207 0086 2D1B     		subs	r5, r5, r4
+ 208 0088 AE43     		bics	r6, r5
+ 209 008a 6546     		mov	r5, ip
+ 210 008c 6C43     		muls	r4, r5
+ 211 008e 3443     		orrs	r4, r6
+ 212 0090 0462     		str	r4, [r0, #32]
+ 213 0092 C8E7     		b	.L19
+ 214              	.L20:
+ 215 0094 4C69     		ldr	r4, [r1, #20]
+ 216 0096 A446     		mov	ip, r4
+ 217 0098 466A     		ldr	r6, [r0, #36]
+ 218 009a 2D0A     		lsrs	r5, r5, #8
+ 219 009c 2C00     		movs	r4, r5
+ 220 009e 6C43     		muls	r4, r5
+ 221 00a0 6C43     		muls	r4, r5
+ 222 00a2 6C43     		muls	r4, r5
+ 223 00a4 2501     		lsls	r5, r4, #4
+ 224 00a6 2D1B     		subs	r5, r5, r4
+ 225 00a8 AE43     		bics	r6, r5
+ 226 00aa 6546     		mov	r5, ip
+ 227 00ac 6C43     		muls	r4, r5
+ 228 00ae 3443     		orrs	r4, r6
+ 229 00b0 4462     		str	r4, [r0, #36]
+ 230 00b2 B8E7     		b	.L19
+ 231              	.L23:
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s 			page 5
+
+
+ 232 00b4 0020     		movs	r0, #0
+ 233              		@ sp needed
+ 234 00b6 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 236              		.section	.text.LL_GPIO_StructInit,"ax",%progbits
+ 237              		.align	1
+ 238              		.global	LL_GPIO_StructInit
+ 239              		.syntax unified
+ 240              		.code	16
+ 241              		.thumb_func
+ 243              	LL_GPIO_StructInit:
+ 244              		@ args = 0, pretend = 0, frame = 0
+ 245              		@ frame_needed = 0, uses_anonymous_args = 0
+ 246              		@ link register save eliminated.
+ 247 0000 044B     		ldr	r3, .L25
+ 248 0002 0360     		str	r3, [r0]
+ 249 0004 0323     		movs	r3, #3
+ 250 0006 4360     		str	r3, [r0, #4]
+ 251 0008 0023     		movs	r3, #0
+ 252 000a 8360     		str	r3, [r0, #8]
+ 253 000c C360     		str	r3, [r0, #12]
+ 254 000e 0361     		str	r3, [r0, #16]
+ 255 0010 4361     		str	r3, [r0, #20]
+ 256              		@ sp needed
+ 257 0012 7047     		bx	lr
+ 258              	.L26:
+ 259              		.align	2
+ 260              	.L25:
+ 261 0014 FFFF0000 		.word	65535
+ 263              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 14.2.1 20241119"
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f0xx_ll_gpio.c
+C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s:16     .text.LL_GPIO_DeInit:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s:22     .text.LL_GPIO_DeInit:00000000 LL_GPIO_DeInit
+C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s:114    .text.LL_GPIO_DeInit:0000009c $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s:126    .text.LL_GPIO_Init:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s:132    .text.LL_GPIO_Init:00000000 LL_GPIO_Init
+C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s:237    .text.LL_GPIO_StructInit:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s:243    .text.LL_GPIO_StructInit:00000000 LL_GPIO_StructInit
+C:\Users\PHILAS~1\AppData\Local\Temp\ccpAFRNY.s:261    .text.LL_GPIO_StructInit:00000014 $d
+
+NO UNDEFINED SYMBOLS

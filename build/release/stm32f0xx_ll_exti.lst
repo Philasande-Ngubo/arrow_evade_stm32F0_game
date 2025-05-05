@@ -1,0 +1,211 @@
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f0xx_ll_exti.c"
+  14              		.text
+  15              		.section	.text.LL_EXTI_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	LL_EXTI_DeInit
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  22              	LL_EXTI_DeInit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 054B     		ldr	r3, .L2
+  27 0002 064A     		ldr	r2, .L2+4
+  28 0004 1A60     		str	r2, [r3]
+  29 0006 0022     		movs	r2, #0
+  30 0008 5A60     		str	r2, [r3, #4]
+  31 000a 9A60     		str	r2, [r3, #8]
+  32 000c DA60     		str	r2, [r3, #12]
+  33 000e 1A61     		str	r2, [r3, #16]
+  34 0010 034A     		ldr	r2, .L2+8
+  35 0012 5A61     		str	r2, [r3, #20]
+  36 0014 0020     		movs	r0, #0
+  37              		@ sp needed
+  38 0016 7047     		bx	lr
+  39              	.L3:
+  40              		.align	2
+  41              	.L2:
+  42 0018 00040140 		.word	1073808384
+  43 001c 0000940F 		.word	261357568
+  44 0020 FFFF7B00 		.word	8126463
+  46              		.section	.text.LL_EXTI_Init,"ax",%progbits
+  47              		.align	1
+  48              		.global	LL_EXTI_Init
+  49              		.syntax unified
+  50              		.code	16
+  51              		.thumb_func
+  53              	LL_EXTI_Init:
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+  56 0000 10B5     		push	{r4, lr}
+  57 0002 0300     		movs	r3, r0
+  58 0004 0079     		ldrb	r0, [r0, #4]
+  59 0006 0028     		cmp	r0, #0
+  60 0008 4ED0     		beq	.L5
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s 			page 2
+
+
+  61 000a 1A68     		ldr	r2, [r3]
+  62 000c 002A     		cmp	r2, #0
+  63 000e 55D0     		beq	.L12
+  64 0010 5879     		ldrb	r0, [r3, #5]
+  65 0012 0128     		cmp	r0, #1
+  66 0014 1ED0     		beq	.L7
+  67 0016 0228     		cmp	r0, #2
+  68 0018 26D0     		beq	.L8
+  69 001a 0028     		cmp	r0, #0
+  70 001c 2ED1     		bne	.L13
+  71 001e 2949     		ldr	r1, .L15
+  72 0020 4C68     		ldr	r4, [r1, #4]
+  73 0022 9443     		bics	r4, r2
+  74 0024 4C60     		str	r4, [r1, #4]
+  75 0026 1A68     		ldr	r2, [r3]
+  76 0028 0C68     		ldr	r4, [r1]
+  77 002a 2243     		orrs	r2, r4
+  78 002c 0A60     		str	r2, [r1]
+  79              	.L9:
+  80 002e 9A79     		ldrb	r2, [r3, #6]
+  81 0030 002A     		cmp	r2, #0
+  82 0032 42D0     		beq	.L6
+  83 0034 022A     		cmp	r2, #2
+  84 0036 23D0     		beq	.L10
+  85 0038 032A     		cmp	r2, #3
+  86 003a 2BD0     		beq	.L11
+  87 003c 012A     		cmp	r2, #1
+  88 003e 3FD1     		bne	.L14
+  89 0040 1C68     		ldr	r4, [r3]
+  90 0042 204A     		ldr	r2, .L15
+  91 0044 D168     		ldr	r1, [r2, #12]
+  92 0046 A143     		bics	r1, r4
+  93 0048 D160     		str	r1, [r2, #12]
+  94 004a 1B68     		ldr	r3, [r3]
+  95 004c 9168     		ldr	r1, [r2, #8]
+  96 004e 0B43     		orrs	r3, r1
+  97 0050 9360     		str	r3, [r2, #8]
+  98 0052 32E0     		b	.L6
+  99              	.L7:
+ 100 0054 1B49     		ldr	r1, .L15
+ 101 0056 0868     		ldr	r0, [r1]
+ 102 0058 9043     		bics	r0, r2
+ 103 005a 0860     		str	r0, [r1]
+ 104 005c 1A68     		ldr	r2, [r3]
+ 105 005e 4868     		ldr	r0, [r1, #4]
+ 106 0060 0243     		orrs	r2, r0
+ 107 0062 4A60     		str	r2, [r1, #4]
+ 108 0064 0020     		movs	r0, #0
+ 109 0066 E2E7     		b	.L9
+ 110              	.L8:
+ 111 0068 1649     		ldr	r1, .L15
+ 112 006a 0868     		ldr	r0, [r1]
+ 113 006c 0243     		orrs	r2, r0
+ 114 006e 0A60     		str	r2, [r1]
+ 115 0070 1A68     		ldr	r2, [r3]
+ 116 0072 4868     		ldr	r0, [r1, #4]
+ 117 0074 0243     		orrs	r2, r0
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s 			page 3
+
+
+ 118 0076 4A60     		str	r2, [r1, #4]
+ 119 0078 0020     		movs	r0, #0
+ 120 007a D8E7     		b	.L9
+ 121              	.L13:
+ 122 007c 0120     		movs	r0, #1
+ 123 007e D6E7     		b	.L9
+ 124              	.L10:
+ 125 0080 1C68     		ldr	r4, [r3]
+ 126 0082 104A     		ldr	r2, .L15
+ 127 0084 9168     		ldr	r1, [r2, #8]
+ 128 0086 A143     		bics	r1, r4
+ 129 0088 9160     		str	r1, [r2, #8]
+ 130 008a 1B68     		ldr	r3, [r3]
+ 131 008c D168     		ldr	r1, [r2, #12]
+ 132 008e 0B43     		orrs	r3, r1
+ 133 0090 D360     		str	r3, [r2, #12]
+ 134 0092 12E0     		b	.L6
+ 135              	.L11:
+ 136 0094 1968     		ldr	r1, [r3]
+ 137 0096 0B4A     		ldr	r2, .L15
+ 138 0098 9468     		ldr	r4, [r2, #8]
+ 139 009a 2143     		orrs	r1, r4
+ 140 009c 9160     		str	r1, [r2, #8]
+ 141 009e 1B68     		ldr	r3, [r3]
+ 142 00a0 D168     		ldr	r1, [r2, #12]
+ 143 00a2 0B43     		orrs	r3, r1
+ 144 00a4 D360     		str	r3, [r2, #12]
+ 145 00a6 08E0     		b	.L6
+ 146              	.L5:
+ 147 00a8 1C68     		ldr	r4, [r3]
+ 148 00aa 064A     		ldr	r2, .L15
+ 149 00ac 1168     		ldr	r1, [r2]
+ 150 00ae A143     		bics	r1, r4
+ 151 00b0 1160     		str	r1, [r2]
+ 152 00b2 1968     		ldr	r1, [r3]
+ 153 00b4 5368     		ldr	r3, [r2, #4]
+ 154 00b6 8B43     		bics	r3, r1
+ 155 00b8 5360     		str	r3, [r2, #4]
+ 156              	.L6:
+ 157              		@ sp needed
+ 158 00ba 10BD     		pop	{r4, pc}
+ 159              	.L12:
+ 160 00bc 0020     		movs	r0, #0
+ 161 00be FCE7     		b	.L6
+ 162              	.L14:
+ 163 00c0 0120     		movs	r0, #1
+ 164 00c2 FAE7     		b	.L6
+ 165              	.L16:
+ 166              		.align	2
+ 167              	.L15:
+ 168 00c4 00040140 		.word	1073808384
+ 170              		.section	.text.LL_EXTI_StructInit,"ax",%progbits
+ 171              		.align	1
+ 172              		.global	LL_EXTI_StructInit
+ 173              		.syntax unified
+ 174              		.code	16
+ 175              		.thumb_func
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s 			page 4
+
+
+ 177              	LL_EXTI_StructInit:
+ 178              		@ args = 0, pretend = 0, frame = 0
+ 179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 180              		@ link register save eliminated.
+ 181 0000 0023     		movs	r3, #0
+ 182 0002 0360     		str	r3, [r0]
+ 183 0004 0371     		strb	r3, [r0, #4]
+ 184 0006 4371     		strb	r3, [r0, #5]
+ 185 0008 0233     		adds	r3, r3, #2
+ 186 000a 8371     		strb	r3, [r0, #6]
+ 187              		@ sp needed
+ 188 000c 7047     		bx	lr
+ 190              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 14.2.1 20241119"
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f0xx_ll_exti.c
+C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s:16     .text.LL_EXTI_DeInit:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s:22     .text.LL_EXTI_DeInit:00000000 LL_EXTI_DeInit
+C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s:42     .text.LL_EXTI_DeInit:00000018 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s:47     .text.LL_EXTI_Init:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s:53     .text.LL_EXTI_Init:00000000 LL_EXTI_Init
+C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s:168    .text.LL_EXTI_Init:000000c4 $d
+C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s:171    .text.LL_EXTI_StructInit:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccPdbvGY.s:177    .text.LL_EXTI_StructInit:00000000 LL_EXTI_StructInit
+
+NO UNDEFINED SYMBOLS

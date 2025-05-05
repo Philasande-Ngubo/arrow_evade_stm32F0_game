@@ -1,0 +1,1 @@
+build/release/main.o build/release/stm32f0xx_it.o build/release/stm32f0xx_ll_exti.o build/release/stm32f0xx_ll_gpio.o build/release/stm32f0xx_ll_pwr.o build/release/stm32f0xx_ll_rcc.o build/release/stm32f0xx_ll_utils.o build/release/system_stm32f0xx.o  build/release/startup_stm32f051x8.o 

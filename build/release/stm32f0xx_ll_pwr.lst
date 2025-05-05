@@ -1,0 +1,56 @@
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccvr9gc0.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f0xx_ll_pwr.c"
+  14              		.text
+  15              		.section	.text.LL_PWR_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	LL_PWR_DeInit
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  22              	LL_PWR_DeInit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 054B     		ldr	r3, .L2
+  27 0002 1969     		ldr	r1, [r3, #16]
+  28 0004 8022     		movs	r2, #128
+  29 0006 5205     		lsls	r2, r2, #21
+  30 0008 0A43     		orrs	r2, r1
+  31 000a 1A61     		str	r2, [r3, #16]
+  32 000c 1A69     		ldr	r2, [r3, #16]
+  33 000e 0349     		ldr	r1, .L2+4
+  34 0010 0A40     		ands	r2, r1
+  35 0012 1A61     		str	r2, [r3, #16]
+  36 0014 0020     		movs	r0, #0
+  37              		@ sp needed
+  38 0016 7047     		bx	lr
+  39              	.L3:
+  40              		.align	2
+  41              	.L2:
+  42 0018 00100240 		.word	1073876992
+  43 001c FFFFFFEF 		.word	-268435457
+  45              		.ident	"GCC: (xPack GNU Arm Embedded GCC x86_64) 14.2.1 20241119"
+ARM GAS  C:\Users\PHILAS~1\AppData\Local\Temp\ccvr9gc0.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f0xx_ll_pwr.c
+C:\Users\PHILAS~1\AppData\Local\Temp\ccvr9gc0.s:16     .text.LL_PWR_DeInit:00000000 $t
+C:\Users\PHILAS~1\AppData\Local\Temp\ccvr9gc0.s:22     .text.LL_PWR_DeInit:00000000 LL_PWR_DeInit
+C:\Users\PHILAS~1\AppData\Local\Temp\ccvr9gc0.s:42     .text.LL_PWR_DeInit:00000018 $d
+
+NO UNDEFINED SYMBOLS
